@@ -6,10 +6,17 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    private GameObject[] triangles;
-    private Rotation[] level = new Rotation[] { Rotation.Up, Rotation.Left, Rotation.Down };
+    private static readonly int MIN_WEIGHT = 2;
+
+    private int weight = MIN_WEIGHT;
     private bool win = false;
     private bool loose = false;
+
+    private GameObject[] triangles;
+    private Rotation[] level;
+
+    public GameObject GridLayout;
+    public GameObject TriangleTemplate;
 
     public Sprite TriangleSuccess;
     public Sprite TriangleError;
@@ -17,12 +24,8 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameEvents.instance.OnCountEnd += DoOnLoose;
-
-        triangles = GameObject.FindGameObjectsWithTag("Triangle");
-        Array.Sort(triangles, CompareNames);
-
-        StartCoroutine(WatchForWin());
+        BindGameEvents();
+        Restart();
     }
 
     // Update is called once per frame
@@ -36,7 +39,25 @@ public class GameController : MonoBehaviour
         var rotations = GetCurrentRotations();
         win = TestForWin(rotations);
 
-        Debug.Log(String.Join(", ", rotations));
+        Debug.Log("Current: " + String.Join(", ", rotations));
+    }
+
+    private void BindGameEvents()
+    {
+        GameEvents.instance.OnCountEnd += DoOnLoose;
+    }
+
+    private void Restart()
+    {
+        var generator = new LevelGenerator();
+        level = generator.Create(weight);
+        Debug.Log("Level: " + String.Join(", ", level));
+
+        // TODO: should check whether rotations not the same as level
+        var rotations = generator.Create(weight);
+        triangles = GenerateTriangles(rotations);
+
+        StartCoroutine(WatchForWin());
     }
 
     private Rotation[] GetCurrentRotations()
@@ -99,11 +120,6 @@ public class GameController : MonoBehaviour
         }
     }
 
-    private int CompareNames(GameObject a, GameObject b)
-    {
-        return a.name.CompareTo(b.name);
-    }
-
     private int MapObjectToRotation(GameObject obj)
     {
         return Convert.ToInt32(obj.transform.rotation.eulerAngles.z);
@@ -138,5 +154,16 @@ public class GameController : MonoBehaviour
     private void ResetLoose()
     {
         loose = false;
+    }
+
+    private GameObject[] GenerateTriangles(Rotation[] rotations)
+    {
+        var generator = new TriangleGenerator(GridLayout.transform, TriangleTemplate);
+        return generator.Create(rotations);
+    }
+
+    private void IncWeight()
+    {
+        weight++;
     }
 }
