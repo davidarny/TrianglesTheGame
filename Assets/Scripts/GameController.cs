@@ -6,7 +6,8 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    private static readonly int MIN_WEIGHT = 2;
+    private static readonly int MIN_WEIGHT = 1; // Should be (initial weight - 1)
+    private static readonly int MAX_WEIGHT = 12;
 
     private int weight = MIN_WEIGHT;
     private bool win = false;
@@ -45,10 +46,15 @@ public class GameController : MonoBehaviour
     private void BindGameEvents()
     {
         GameEvents.instance.OnCountEnd += DoOnLoose;
+        GameEvents.instance.OnRestart += DoOnRestart;
     }
 
     private void Restart()
     {
+        ResetState();
+        // TODO: remove when net level transition done
+        IncWeight();
+
         var generator = new LevelGenerator();
         level = generator.Create(weight);
         Debug.Log("Level: " + String.Join(", ", level));
@@ -58,6 +64,23 @@ public class GameController : MonoBehaviour
         triangles = GenerateTriangles(rotations);
 
         StartCoroutine(WatchForWin());
+    }
+
+    private void ResetState()
+    {
+        if (triangles != null)
+        {
+            DestroyTriangles();
+        }
+        StopAllCoroutines();
+    }
+
+    private void DestroyTriangles()
+    {
+        foreach (GameObject triangle in triangles)
+        {
+            Destroy(triangle);
+        }
     }
 
     private Rotation[] GetCurrentRotations()
@@ -97,6 +120,11 @@ public class GameController : MonoBehaviour
         {
             SetSuccessSprite(triangle);
         }
+    }
+
+    private void DoOnRestart()
+    {
+        Restart();
     }
 
     private void DoOnLoose()
@@ -164,6 +192,10 @@ public class GameController : MonoBehaviour
 
     private void IncWeight()
     {
+        if (weight == MAX_WEIGHT)
+        {
+            return;
+        }
         weight++;
     }
 }

@@ -50,4 +50,14 @@ public class GameEvents : MonoBehaviour
             OnCountEnd();
         }
     }
+
+    public event Action OnRestart;
+
+    public void TriggerRestart()
+    {
+        if (OnRestart != null)
+        {
+            OnRestart();
+        }
+    }
 }

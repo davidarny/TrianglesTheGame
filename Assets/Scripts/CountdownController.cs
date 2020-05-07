@@ -19,8 +19,7 @@ public class CountdownController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameEvents.instance.OnWin += DoOnWin;
-
+        BindGameEvents();
         SetActive();
         StartCoroutine(CountdownStart());
     }
@@ -31,11 +30,22 @@ public class CountdownController : MonoBehaviour
 
     }
 
+    private void BindGameEvents()
+    {
+        GameEvents.instance.OnWin += DoOnWin;
+        GameEvents.instance.OnRestart += DoOnRestart;
+    }
+
+    private void DoOnRestart()
+    {
+        ResetTimer();
+        UpdateText();
+    }
+
     private void DoOnWin()
     {
         SetInactive();
-        ResetTimer();
-        UpdateText();
+        DoOnRestart();
     }
 
     private IEnumerator CountdownStart()

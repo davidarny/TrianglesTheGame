@@ -9,9 +9,7 @@ public class TriangleController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameEvents.instance.OnWin += OnEnd;
-        GameEvents.instance.OnCountEnd += OnEnd;
-
+        BindGameEvents();
         SetActive();
     }
 
@@ -28,6 +26,12 @@ public class TriangleController : MonoBehaviour
             return;
         }
         transform.Rotate(0, 0, 90);
+    }
+
+    private void BindGameEvents()
+    {
+        GameEvents.instance.OnWin += OnEnd;
+        GameEvents.instance.OnCountEnd += OnEnd;
     }
 
     private void OnEnd()
