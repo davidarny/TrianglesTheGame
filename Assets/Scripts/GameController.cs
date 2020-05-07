@@ -68,11 +68,15 @@ public class GameController : MonoBehaviour
 
     private void ResetState()
     {
+        StopAllCoroutines();
+
         if (triangles != null)
         {
             DestroyTriangles();
         }
-        StopAllCoroutines();
+
+        win = false;
+        loose = false;
     }
 
     private void DestroyTriangles()

@@ -20,14 +20,19 @@ public class CountdownController : MonoBehaviour
     void Start()
     {
         BindGameEvents();
-        SetActive();
-        StartCoroutine(CountdownStart());
+        Restart();
     }
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+    private void Restart()
+    {
+        SetActive();
+        StartCoroutine(CountdownStart());
     }
 
     private void BindGameEvents()
@@ -38,14 +43,17 @@ public class CountdownController : MonoBehaviour
 
     private void DoOnRestart()
     {
+        StopAllCoroutines();
         ResetTimer();
-        UpdateText();
+        Restart();
     }
 
     private void DoOnWin()
     {
+        StopAllCoroutines();
         SetInactive();
-        DoOnRestart();
+        ResetTimer();
+        UpdateText();
     }
 
     private IEnumerator CountdownStart()
