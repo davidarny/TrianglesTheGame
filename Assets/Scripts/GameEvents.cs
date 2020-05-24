@@ -39,6 +39,16 @@ public class GameEvents : MonoBehaviour
         }
     }
 
+    public event Action OnWinEnd;
+
+    public void TriggerWinEnd()
+    {
+        if (OnWinEnd != null)
+        {
+            OnWinEnd();
+        }
+    }
+
     public event Action OnLoose;
 
     public void TriggerLoose()

@@ -21,12 +21,12 @@ public class PrepareState : BaseGameState
 
     private void Restart()
     {
-        GameStore.instance.level = LevelGenerator.Create().GetRandomRotations(GameStore.instance.weight);
-        Debug.Log("Level: " + String.Join(", ", GameStore.instance.level));
+        GameStore.instance.SetLevel(LevelGenerator.Create().GetRandomRotations(GameStore.instance.weight));
+        Debug.Log("Rotations[]: " + String.Join(", ", GameStore.instance.level));
 
-        Debug.Log("========== Preparing... ==========");
+        Debug.Log($"========== Preparing LEVEL={GameStore.instance.weight} STEP={GameStore.instance.step} ==========");
 
-        GameStore.instance.triangles = GenerateTriangles(GameStore.instance.level);
+        GameStore.instance.SetTriangles(GenerateTriangles(GameStore.instance.level));
     }
 
     private void BindGameEvents()
@@ -41,7 +41,7 @@ public class PrepareState : BaseGameState
 
     private void DoOnReady()
     {
-        GameStore.instance.ready = true;
+        GameStore.instance.SetReady(true);
         GameEvents.instance.TriggerReady();
         GameEvents.instance.OnCountEnd -= DoOnReady;
     }

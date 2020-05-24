@@ -10,12 +10,14 @@ public class GameController : MonoBehaviour
 
     private PrepareState prepare;
     private PlayingState playing;
+    private WinState win;
     private GameState state;
 
     public GameController()
     {
         prepare = new PrepareState(this, new GameController.Context(this));
         playing = new PlayingState(this, new GameController.Context(this));
+        win = new WinState(this, new GameController.Context(this));
     }
 
     internal class Context : GameContext
@@ -55,12 +57,13 @@ public class GameController : MonoBehaviour
     {
         GameEvents.instance.OnReady += DoOnReady;
         GameEvents.instance.OnRestart += DoOnRestart;
+        GameEvents.instance.OnWin += DoOnWin;
+        GameEvents.instance.OnWinEnd += DoOnWinEnd;
     }
 
     private void DoOnReady()
     {
-        GameStore.instance.DestroyTriangles();
-        GameStore.instance.timer = GameStore.INITIAL_TIMER;
+        GameStore.instance.ResetAfterReady();
 
         state.Unbind();
         state = playing;
@@ -69,12 +72,36 @@ public class GameController : MonoBehaviour
         GameEvents.instance.TriggerCountRestart();
     }
 
-    private void DoOnRestart()
+    private void DoOnWin()
     {
-        GameStore.instance.ResetState();
+        GameStore.instance.ResetAfterWin();
+
+        state.Unbind();
+        state = win;
+        state.Start();
+
+        GameEvents.instance.TriggerCountRestart();
+    }
+
+    private void DoOnWinEnd()
+    {
+        GameStore.instance.ResetAfterWinEnd();
 
         state.Unbind();
         state = prepare;
         state.Start();
+
+        GameEvents.instance.TriggerCountRestart();
+    }
+
+    private void DoOnRestart()
+    {
+        GameStore.instance.ResetAfterRestart();
+
+        state.Unbind();
+        state = prepare;
+        state.Start();
+
+        GameEvents.instance.TriggerCountRestart();
     }
 }

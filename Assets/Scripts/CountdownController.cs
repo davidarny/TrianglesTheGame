@@ -36,12 +36,12 @@ public class CountdownController : MonoBehaviour
     private void BindGameEvents()
     {
         GameEvents.instance.OnWin += DoOnWin;
-        GameEvents.instance.OnRestart += DoOnRestart;
         GameEvents.instance.OnCountRestart += DoOnRestart;
     }
 
     private void DoOnRestart()
     {
+        Show();
         StopAllCoroutines();
         ResetTimer();
         Restart();
@@ -49,10 +49,10 @@ public class CountdownController : MonoBehaviour
 
     private void DoOnWin()
     {
+        Hide();
         StopAllCoroutines();
-        SetInactive();
         ResetTimer();
-        UpdateText();
+        Restart();
     }
 
     private IEnumerator CountdownStart()
@@ -99,5 +99,15 @@ public class CountdownController : MonoBehaviour
     private void SetInactive()
     {
         active = false;
+    }
+
+    private void Hide()
+    {
+        display.gameObject.SetActive(false);
+    }
+
+    private void Show()
+    {
+        display.gameObject.SetActive(true);
     }
 }

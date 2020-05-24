@@ -28,7 +28,7 @@ public class PlayingState : BaseGameState
         }
 
         var rotations = GetCurrentRotations();
-        GameStore.instance.win = TestForWin(rotations);
+        GameStore.instance.SetWin(TestForWin(rotations));
 
         Debug.Log("Current: " + String.Join(", ", rotations));
     }
@@ -50,11 +50,11 @@ public class PlayingState : BaseGameState
             behaviour.StopCoroutine(routine);
         }
 
-        Debug.Log("========== Playing... ==========");
+        Debug.Log($"========== Playing LEVEL={GameStore.instance.weight} STEP={GameStore.instance.step} ==========");
 
         // TODO: should check whether rotations not the same as level
         var rotations = LevelGenerator.Create().GetRandomRotations(GameStore.instance.weight);
-        GameStore.instance.triangles = GenerateTriangles(rotations);
+        GameStore.instance.SetTriangles(GenerateTriangles(rotations));
 
         routine = WatchForWin();
         behaviour.StartCoroutine(routine);
@@ -150,20 +150,11 @@ public class PlayingState : BaseGameState
 
     private void SetLoose()
     {
-        GameStore.instance.loose = true;
+        GameStore.instance.SetLoose(true);
     }
 
     private void ResetLoose()
     {
-        GameStore.instance.loose = false;
-    }
-
-    private void IncWeight()
-    {
-        if (GameStore.instance.weight == GameStore.MAX_WEIGHT)
-        {
-            return;
-        }
-        GameStore.instance.weight++;
+        GameStore.instance.SetLoose(false);
     }
 }
