@@ -4,11 +4,10 @@ using UnityEngine.UI;
 
 public class CountdownController : MonoBehaviour
 {
-    public int count;
-    public Text display;
     public bool active = true;
+    private int current;
 
-    private int timer;
+    public Text display;
 
     void Awake()
     {
@@ -38,6 +37,7 @@ public class CountdownController : MonoBehaviour
     {
         GameEvents.instance.OnWin += DoOnWin;
         GameEvents.instance.OnRestart += DoOnRestart;
+        GameEvents.instance.OnCountRestart += DoOnRestart;
     }
 
     private void DoOnRestart()
@@ -73,22 +73,22 @@ public class CountdownController : MonoBehaviour
 
     private void ResetTimer()
     {
-        timer = count;
+        current = GameStore.instance.timer;
     }
 
     private void DecrementTimer()
     {
-        timer--;
+        current--;
     }
 
     private bool IsRunning()
     {
-        return timer > 0;
+        return current > 0;
     }
 
     private void UpdateText()
     {
-        display.text = timer.ToString();
+        display.text = current.ToString();
     }
 
     private void SetActive()

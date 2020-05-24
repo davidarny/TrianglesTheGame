@@ -8,8 +8,15 @@ public class GameController : MonoBehaviour
     public Sprite TriangleSuccess;
     public Sprite TriangleError;
 
+    private PrepareState prepare;
     private PlayingState playing;
     private GameState state;
+
+    public GameController()
+    {
+        prepare = new PrepareState(this, new GameController.Context(this));
+        playing = new PlayingState(this, new GameController.Context(this));
+    }
 
     internal class Context : GameContext
     {
@@ -32,8 +39,9 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        state = new PlayingState();
-        state.SetContext(this, new GameController.Context(this));
+        BindGameEvents();
+
+        state = prepare;
         state.Start();
     }
 
@@ -41,5 +49,30 @@ public class GameController : MonoBehaviour
     void Update()
     {
         state.Update();
+    }
+
+    private void BindGameEvents()
+    {
+        GameEvents.instance.OnReady += DoOnReady;
+        GameEvents.instance.OnRestart += DoOnRestart;
+    }
+
+    private void DoOnReady()
+    {
+        GameStore.instance.DestroyTriangles();
+        GameStore.instance.timer = GameStore.INITIAL_TIMER;
+
+        state = playing;
+        state.Start();
+
+        GameEvents.instance.TriggerCountRestart();
+    }
+
+    private void DoOnRestart()
+    {
+        GameStore.instance.ResetState();
+
+        state = prepare;
+        state.Start();
     }
 }

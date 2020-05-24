@@ -2,9 +2,19 @@ using System;
 
 public class LevelGenerator
 {
+    public static LevelGenerator Create()
+    {
+        return new LevelGenerator();
+    }
+
+    private LevelGenerator()
+    {
+
+    }
+
     private readonly Random random = new Random();
 
-    public Rotation[] Create(int weight)
+    public Rotation[] GetRandomRotations(int weight)
     {
         var rotations = new Rotation[weight];
         for (int i = 0; i < weight; i++)

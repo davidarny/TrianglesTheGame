@@ -5,15 +5,10 @@ using UnityEngine;
 
 public class PlayingState : BaseGameState
 {
-    private static readonly int MIN_WEIGHT = 1; // Should be (initial weight - 1)
-    private static readonly int MAX_WEIGHT = 12;
+    public PlayingState(MonoBehaviour behaviour, GameContext game) : base(behaviour, game)
+    {
 
-    private int weight = MIN_WEIGHT;
-    private bool win = false;
-    private bool loose = false;
-
-    private GameObject[] triangles;
-    private Rotation[] level;
+    }
 
     // Start is called before the first frame update
     protected override void DoOnStart()
@@ -25,13 +20,13 @@ public class PlayingState : BaseGameState
     // Update is called once per frame
     protected override void DoOnUpdate()
     {
-        if (win || loose)
+        if (GameStore.instance.win || GameStore.instance.loose)
         {
             return;
         }
 
         var rotations = GetCurrentRotations();
-        win = TestForWin(rotations);
+        GameStore.instance.win = TestForWin(rotations);
 
         Debug.Log("Current: " + String.Join(", ", rotations));
     }
@@ -39,50 +34,24 @@ public class PlayingState : BaseGameState
     private void BindGameEvents()
     {
         GameEvents.instance.OnCountEnd += DoOnLoose;
-        GameEvents.instance.OnRestart += DoOnRestart;
     }
 
     private void Restart()
     {
-        ResetState();
-        // TODO: remove when net level transition done
-        IncWeight();
+        behaviour.StopAllCoroutines();
 
-        var generator = new LevelGenerator();
-        level = generator.Create(weight);
-        Debug.Log("Level: " + String.Join(", ", level));
+        Debug.Log("Playing...");
 
         // TODO: should check whether rotations not the same as level
-        var rotations = generator.Create(weight);
-        triangles = GenerateTriangles(rotations);
+        var rotations = LevelGenerator.Create().GetRandomRotations(GameStore.instance.weight);
+        GameStore.instance.triangles = GenerateTriangles(rotations);
 
         behaviour.StartCoroutine(WatchForWin());
     }
 
-    private void ResetState()
-    {
-        behaviour.StopAllCoroutines();
-
-        if (triangles != null)
-        {
-            DestroyTriangles();
-        }
-
-        win = false;
-        loose = false;
-    }
-
-    private void DestroyTriangles()
-    {
-        foreach (GameObject triangle in triangles)
-        {
-            UnityEngine.Object.Destroy(triangle);
-        }
-    }
-
     private Rotation[] GetCurrentRotations()
     {
-        return triangles
+        return GameStore.instance.triangles
             .Select(MapObjectToRotation)
             .Select(MapAngleToRotation)
             .ToArray();
@@ -90,18 +59,18 @@ public class PlayingState : BaseGameState
 
     private bool TestForWin(Rotation[] rotations)
     {
-        return rotations.SequenceEqual(level);
+        return rotations.SequenceEqual(GameStore.instance.level);
     }
 
     private IEnumerator WatchForWin()
     {
         while (true)
         {
-            if (loose)
+            if (GameStore.instance.loose)
             {
                 yield break;
             }
-            else if (win)
+            else if (GameStore.instance.win)
             {
                 DoOnWin();
                 yield break;
@@ -113,15 +82,10 @@ public class PlayingState : BaseGameState
     private void DoOnWin()
     {
         GameEvents.instance.TriggerWin();
-        foreach (GameObject triangle in triangles)
+        foreach (GameObject triangle in GameStore.instance.triangles)
         {
             SetSuccessSprite(triangle);
         }
-    }
-
-    private void DoOnRestart()
-    {
-        Restart();
     }
 
     private void DoOnLoose()
@@ -129,11 +93,11 @@ public class PlayingState : BaseGameState
         SetLoose();
 
         int index = 0;
-        foreach (GameObject triangle in triangles)
+        foreach (GameObject triangle in GameStore.instance.triangles)
         {
             var angle = MapObjectToRotation(triangle);
             var rotation = MapAngleToRotation(angle);
-            if (level[index] == rotation)
+            if (GameStore.instance.level[index] == rotation)
             {
                 SetSuccessSprite(triangle);
             }
@@ -143,6 +107,8 @@ public class PlayingState : BaseGameState
             }
             index++;
         }
+
+        GameEvents.instance.TriggerLoose();
     }
 
     private int MapObjectToRotation(GameObject obj)
@@ -173,26 +139,20 @@ public class PlayingState : BaseGameState
 
     private void SetLoose()
     {
-        loose = true;
+        GameStore.instance.loose = true;
     }
 
     private void ResetLoose()
     {
-        loose = false;
-    }
-
-    private GameObject[] GenerateTriangles(Rotation[] rotations)
-    {
-        var generator = new TriangleGenerator(game.GridLayout.transform, game.TriangleTemplate);
-        return generator.Create(rotations);
+        GameStore.instance.loose = false;
     }
 
     private void IncWeight()
     {
-        if (weight == MAX_WEIGHT)
+        if (GameStore.instance.weight == GameStore.MAX_WEIGHT)
         {
             return;
         }
-        weight++;
+        GameStore.instance.weight++;
     }
 }

@@ -39,6 +39,16 @@ public class GameEvents : MonoBehaviour
         }
     }
 
+    public event Action OnLoose;
+
+    public void TriggerLoose()
+    {
+        if (OnLoose != null)
+        {
+            OnLoose();
+        }
+    }
+
     public event Action OnCountEnd;
 
     public void TriggerCountEnd()
@@ -56,6 +66,26 @@ public class GameEvents : MonoBehaviour
         if (OnRestart != null)
         {
             OnRestart();
+        }
+    }
+
+    public event Action OnCountRestart;
+
+    public void TriggerCountRestart()
+    {
+        if (OnCountRestart != null)
+        {
+            OnCountRestart();
+        }
+    }
+
+    public event Action OnReady;
+
+    public void TriggerReady()
+    {
+        if (OnReady != null)
+        {
+            OnReady();
         }
     }
 }

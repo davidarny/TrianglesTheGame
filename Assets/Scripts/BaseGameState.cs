@@ -1,13 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public abstract class BaseGameState : GameState
 {
     protected MonoBehaviour behaviour;
     protected GameContext game;
 
-    public void SetContext(MonoBehaviour behaviour, GameContext game)
+    public BaseGameState(MonoBehaviour behaviour, GameContext game)
     {
         this.behaviour = behaviour;
         this.game = game;
@@ -28,4 +26,10 @@ public abstract class BaseGameState : GameState
     protected abstract void DoOnStart();
 
     protected abstract void DoOnUpdate();
+
+    protected GameObject[] GenerateTriangles(Rotation[] rotations)
+    {
+        var generator = new TriangleGenerator(game.GridLayout.transform, game.TriangleTemplate);
+        return generator.Create(rotations);
+    }
 }

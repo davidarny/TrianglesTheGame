@@ -19,7 +19,7 @@ public class TriangleController : MonoBehaviour
 
     void OnMouseDown()
     {
-        if (!active)
+        if (!active || !GameStore.instance.ready)
         {
             return;
         }
@@ -29,7 +29,7 @@ public class TriangleController : MonoBehaviour
     private void BindGameEvents()
     {
         GameEvents.instance.OnWin += OnEnd;
-        GameEvents.instance.OnCountEnd += OnEnd;
+        GameEvents.instance.OnLoose += OnEnd;
     }
 
     private void OnEnd()
