@@ -1,12 +1,8 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
 
 public class LevelGenerator
 {
-    private readonly System.Random random = new System.Random();
+    private readonly Random random = new Random();
 
     public Rotation[] Create(int weight)
     {
