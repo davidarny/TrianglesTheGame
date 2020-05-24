@@ -26,9 +26,7 @@ public class PrepareState : BaseGameState
 
         Debug.Log("========== Preparing... ==========");
 
-        // TODO: should check whether rotations not the same as level
-        var rotations = LevelGenerator.Create().GetRandomRotations(GameStore.instance.weight);
-        GameStore.instance.triangles = GenerateTriangles(rotations);
+        GameStore.instance.triangles = GenerateTriangles(GameStore.instance.level);
     }
 
     private void BindGameEvents()
