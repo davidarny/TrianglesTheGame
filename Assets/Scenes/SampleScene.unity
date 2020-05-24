@@ -894,8 +894,8 @@ GameObject:
   - component: {fileID: 1516274044}
   - component: {fileID: 1516274043}
   - component: {fileID: 1516274047}
-  - component: {fileID: 1516274048}
   - component: {fileID: 1516274049}
+  - component: {fileID: 1516274048}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -1025,6 +1025,8 @@ MonoBehaviour:
   win: 0
   loose: 0
   ready: 0
+  triangles: []
+  level: 
 --- !u!1 &1648043609
 GameObject:
   m_ObjectHideFlags: 0

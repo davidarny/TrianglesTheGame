@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class CountdownController : MonoBehaviour
 {
     public bool active = true;
-    private int current;
+    private int current = 0;
 
     public Text display;
 
