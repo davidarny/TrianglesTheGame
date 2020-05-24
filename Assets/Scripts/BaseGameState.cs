@@ -32,4 +32,6 @@ public abstract class BaseGameState : GameState
         var generator = new TriangleGenerator(game.GridLayout.transform, game.TriangleTemplate);
         return generator.Create(rotations);
     }
+
+    public abstract void Unbind();
 }

@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PlayingState : BaseGameState
 {
+    private IEnumerator routine;
+
     public PlayingState(MonoBehaviour behaviour, GameContext game) : base(behaviour, game)
     {
 
@@ -36,17 +38,26 @@ public class PlayingState : BaseGameState
         GameEvents.instance.OnCountEnd += DoOnLoose;
     }
 
+    public override void Unbind()
+    {
+        GameEvents.instance.OnCountEnd -= DoOnLoose;
+    }
+
     private void Restart()
     {
-        behaviour.StopAllCoroutines();
+        if (routine != null)
+        {
+            behaviour.StopCoroutine(routine);
+        }
 
-        Debug.Log("Playing...");
+        Debug.Log("========== Playing... ==========");
 
         // TODO: should check whether rotations not the same as level
         var rotations = LevelGenerator.Create().GetRandomRotations(GameStore.instance.weight);
         GameStore.instance.triangles = GenerateTriangles(rotations);
 
-        behaviour.StartCoroutine(WatchForWin());
+        routine = WatchForWin();
+        behaviour.StartCoroutine(routine);
     }
 
     private Rotation[] GetCurrentRotations()

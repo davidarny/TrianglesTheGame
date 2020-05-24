@@ -23,7 +23,8 @@ public class PrepareState : BaseGameState
     {
         GameStore.instance.level = LevelGenerator.Create().GetRandomRotations(GameStore.instance.weight);
         Debug.Log("Level: " + String.Join(", ", GameStore.instance.level));
-        Debug.Log("Preparing...");
+
+        Debug.Log("========== Preparing... ==========");
 
         // TODO: should check whether rotations not the same as level
         var rotations = LevelGenerator.Create().GetRandomRotations(GameStore.instance.weight);
@@ -33,6 +34,11 @@ public class PrepareState : BaseGameState
     private void BindGameEvents()
     {
         GameEvents.instance.OnCountEnd += DoOnReady;
+    }
+
+    public override void Unbind()
+    {
+        GameEvents.instance.OnCountEnd -= DoOnReady;
     }
 
     private void DoOnReady()

@@ -62,6 +62,7 @@ public class GameController : MonoBehaviour
         GameStore.instance.DestroyTriangles();
         GameStore.instance.timer = GameStore.INITIAL_TIMER;
 
+        state.Unbind();
         state = playing;
         state.Start();
 
@@ -72,6 +73,7 @@ public class GameController : MonoBehaviour
     {
         GameStore.instance.ResetState();
 
+        state.Unbind();
         state = prepare;
         state.Start();
     }
