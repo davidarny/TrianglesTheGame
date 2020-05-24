@@ -23,7 +23,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Triangles
-   &#160;<span id="projectnumber">0.0.2_alpha.2</span>
+   &#160;<span id="projectnumber">0.0.3_alpha</span>
    </div>
   </td>
  </tr>
@@ -65,7 +65,6 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="#properties">Properties</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
@@ -83,36 +82,39 @@ Inheritance diagram for GameStore:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:abb5a616bd8d873633890b5057a609f0b"><td class="memItemLeft" align="right" valign="top"><a id="abb5a616bd8d873633890b5057a609f0b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>DestroyTriangles</b> ()</td></tr>
-<tr class="separator:abb5a616bd8d873633890b5057a609f0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad084fc5cabd4f4b76d8eaf28da87b79d"><td class="memItemLeft" align="right" valign="top"><a id="ad084fc5cabd4f4b76d8eaf28da87b79d"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>ResetState</b> ()</td></tr>
-<tr class="separator:ad084fc5cabd4f4b76d8eaf28da87b79d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:a02ee87ccbb1d36a2d124a2565c77ee98"><td class="memItemLeft" align="right" valign="top"><a id="a02ee87ccbb1d36a2d124a2565c77ee98"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>weight</b> = MIN_WEIGHT</td></tr>
-<tr class="separator:a02ee87ccbb1d36a2d124a2565c77ee98"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1acc6660e05b2872ef37314acfc880b6"><td class="memItemLeft" align="right" valign="top"><a id="a1acc6660e05b2872ef37314acfc880b6"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>timer</b> = INITIAL_TIMER</td></tr>
-<tr class="separator:a1acc6660e05b2872ef37314acfc880b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7c51840d6be7c5827cf006f76c26380f"><td class="memItemLeft" align="right" valign="top"><a id="a7c51840d6be7c5827cf006f76c26380f"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>win</b> = false</td></tr>
-<tr class="separator:a7c51840d6be7c5827cf006f76c26380f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad4371a312fdd0b333082e34252dfc5dd"><td class="memItemLeft" align="right" valign="top"><a id="ad4371a312fdd0b333082e34252dfc5dd"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>loose</b> = false</td></tr>
-<tr class="separator:ad4371a312fdd0b333082e34252dfc5dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9e5bb2835ca23ab119ebb4547d9e27ba"><td class="memItemLeft" align="right" valign="top"><a id="a9e5bb2835ca23ab119ebb4547d9e27ba"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>ready</b> = false</td></tr>
-<tr class="separator:a9e5bb2835ca23ab119ebb4547d9e27ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acbdc80da7f9b2cb3339d7a35161156e4"><td class="memItemLeft" align="right" valign="top"><a id="acbdc80da7f9b2cb3339d7a35161156e4"></a>
-GameObject[]&#160;</td><td class="memItemRight" valign="bottom"><b>triangles</b></td></tr>
-<tr class="separator:acbdc80da7f9b2cb3339d7a35161156e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2892e3600a51cdd2ba219e37b513ffc7"><td class="memItemLeft" align="right" valign="top"><a id="a2892e3600a51cdd2ba219e37b513ffc7"></a>
-Rotation[]&#160;</td><td class="memItemRight" valign="bottom"><b>level</b></td></tr>
-<tr class="separator:a2892e3600a51cdd2ba219e37b513ffc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85d84f3b66428d6562e0760f1f56267c"><td class="memItemLeft" align="right" valign="top"><a id="a85d84f3b66428d6562e0760f1f56267c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>ResetAfterReady</b> ()</td></tr>
+<tr class="separator:a85d84f3b66428d6562e0760f1f56267c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d5040208d39fc04aa5200d89f406c89"><td class="memItemLeft" align="right" valign="top"><a id="a1d5040208d39fc04aa5200d89f406c89"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>ResetAfterRestart</b> ()</td></tr>
+<tr class="separator:a1d5040208d39fc04aa5200d89f406c89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf01791214a11cc773522b165e675c6a"><td class="memItemLeft" align="right" valign="top"><a id="acf01791214a11cc773522b165e675c6a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>ResetAfterWin</b> ()</td></tr>
+<tr class="separator:acf01791214a11cc773522b165e675c6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0fb7ac9e456d616fcd39365150ad2fed"><td class="memItemLeft" align="right" valign="top"><a id="a0fb7ac9e456d616fcd39365150ad2fed"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>ResetAfterWinEnd</b> ()</td></tr>
+<tr class="separator:a0fb7ac9e456d616fcd39365150ad2fed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1019a4fce361c96d2bdf3224807a86a7"><td class="memItemLeft" align="right" valign="top"><a id="a1019a4fce361c96d2bdf3224807a86a7"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>NextWeight</b> ()</td></tr>
+<tr class="separator:a1019a4fce361c96d2bdf3224807a86a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a3cfeb96799e2a64ea4c138533bc4c9"><td class="memItemLeft" align="right" valign="top"><a id="a8a3cfeb96799e2a64ea4c138533bc4c9"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetWin</b> (bool win)</td></tr>
+<tr class="separator:a8a3cfeb96799e2a64ea4c138533bc4c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0ab70ed1faae24d55e94d63de2f9ec9"><td class="memItemLeft" align="right" valign="top"><a id="ab0ab70ed1faae24d55e94d63de2f9ec9"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetLoose</b> (bool loose)</td></tr>
+<tr class="separator:ab0ab70ed1faae24d55e94d63de2f9ec9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59e7b549b8bb26f2b44029643aa00db6"><td class="memItemLeft" align="right" valign="top"><a id="a59e7b549b8bb26f2b44029643aa00db6"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>NextStep</b> ()</td></tr>
+<tr class="separator:a59e7b549b8bb26f2b44029643aa00db6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78825db526e3d87f0370db3b9e81d2a7"><td class="memItemLeft" align="right" valign="top"><a id="a78825db526e3d87f0370db3b9e81d2a7"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetReady</b> (bool ready)</td></tr>
+<tr class="separator:a78825db526e3d87f0370db3b9e81d2a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ffb3d4fcdc26703dd3c17910763f40d"><td class="memItemLeft" align="right" valign="top"><a id="a2ffb3d4fcdc26703dd3c17910763f40d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetTriangles</b> (GameObject[] triangles)</td></tr>
+<tr class="separator:a2ffb3d4fcdc26703dd3c17910763f40d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b4869000b48877b5086b27fbb138b2d"><td class="memItemLeft" align="right" valign="top"><a id="a8b4869000b48877b5086b27fbb138b2d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetLevel</b> (Rotation[] level)</td></tr>
+<tr class="separator:a8b4869000b48877b5086b27fbb138b2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
@@ -122,27 +124,81 @@ static readonly int&#160;</td><td class="memItemRight" valign="bottom"><b>MIN_WE
 <tr class="memitem:a52e75bba7c895c6062c5445ebbd8ec43"><td class="memItemLeft" align="right" valign="top"><a id="a52e75bba7c895c6062c5445ebbd8ec43"></a>
 static readonly int&#160;</td><td class="memItemRight" valign="bottom"><b>MAX_WEIGHT</b> = 12</td></tr>
 <tr class="separator:a52e75bba7c895c6062c5445ebbd8ec43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b4152fc19f8541e91ccf697463667c9"><td class="memItemLeft" align="right" valign="top"><a id="a2b4152fc19f8541e91ccf697463667c9"></a>
+static readonly int&#160;</td><td class="memItemRight" valign="bottom"><b>MAX_STEP</b> = 4</td></tr>
+<tr class="separator:a2b4152fc19f8541e91ccf697463667c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd2d36f68a71cc65577e82063519e099"><td class="memItemLeft" align="right" valign="top"><a id="abd2d36f68a71cc65577e82063519e099"></a>
+static readonly int&#160;</td><td class="memItemRight" valign="bottom"><b>WIN_DELAY</b> = 1</td></tr>
+<tr class="separator:abd2d36f68a71cc65577e82063519e099"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9f28d5fefaeb67994548d13d51ecfc6e"><td class="memItemLeft" align="right" valign="top"><a id="a9f28d5fefaeb67994548d13d51ecfc6e"></a>
 static readonly int&#160;</td><td class="memItemRight" valign="bottom"><b>INITIAL_TIMER</b> = 5</td></tr>
 <tr class="separator:a9f28d5fefaeb67994548d13d51ecfc6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
+<tr class="memitem:a02ee87ccbb1d36a2d124a2565c77ee98"><td class="memItemLeft" align="right" valign="top"><a id="a02ee87ccbb1d36a2d124a2565c77ee98"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>weight</b> = MIN_WEIGHT<code> [get, private set]</code></td></tr>
+<tr class="separator:a02ee87ccbb1d36a2d124a2565c77ee98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3abb6cbcd92d990955bd38a75c3f36f"><td class="memItemLeft" align="right" valign="top"><a id="ae3abb6cbcd92d990955bd38a75c3f36f"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>step</b> = 0<code> [get, private set]</code></td></tr>
+<tr class="separator:ae3abb6cbcd92d990955bd38a75c3f36f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1acc6660e05b2872ef37314acfc880b6"><td class="memItemLeft" align="right" valign="top"><a id="a1acc6660e05b2872ef37314acfc880b6"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>timer</b> = INITIAL_TIMER<code> [get, private set]</code></td></tr>
+<tr class="separator:a1acc6660e05b2872ef37314acfc880b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c51840d6be7c5827cf006f76c26380f"><td class="memItemLeft" align="right" valign="top"><a id="a7c51840d6be7c5827cf006f76c26380f"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>win</b> = false<code> [get, private set]</code></td></tr>
+<tr class="separator:a7c51840d6be7c5827cf006f76c26380f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4371a312fdd0b333082e34252dfc5dd"><td class="memItemLeft" align="right" valign="top"><a id="ad4371a312fdd0b333082e34252dfc5dd"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>loose</b> = false<code> [get, private set]</code></td></tr>
+<tr class="separator:ad4371a312fdd0b333082e34252dfc5dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e5bb2835ca23ab119ebb4547d9e27ba"><td class="memItemLeft" align="right" valign="top"><a id="a9e5bb2835ca23ab119ebb4547d9e27ba"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>ready</b> = false<code> [get, private set]</code></td></tr>
+<tr class="separator:a9e5bb2835ca23ab119ebb4547d9e27ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acbdc80da7f9b2cb3339d7a35161156e4"><td class="memItemLeft" align="right" valign="top"><a id="acbdc80da7f9b2cb3339d7a35161156e4"></a>
+GameObject[]&#160;</td><td class="memItemRight" valign="bottom"><b>triangles</b><code> [get, private set]</code></td></tr>
+<tr class="separator:acbdc80da7f9b2cb3339d7a35161156e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2892e3600a51cdd2ba219e37b513ffc7"><td class="memItemLeft" align="right" valign="top"><a id="a2892e3600a51cdd2ba219e37b513ffc7"></a>
+Rotation[]&#160;</td><td class="memItemRight" valign="bottom"><b>level</b><code> [get, private set]</code></td></tr>
+<tr class="separator:a2892e3600a51cdd2ba219e37b513ffc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2cf2b19a9423da6f6ada1202ce8dfdea"><td class="memItemLeft" align="right" valign="top"><a id="a2cf2b19a9423da6f6ada1202ce8dfdea"></a>
 static <a class="el" href="class_game_store.html">GameStore</a>&#160;</td><td class="memItemRight" valign="bottom"><b>instance</b><code> [get, private set]</code></td></tr>
 <tr class="separator:a2cf2b19a9423da6f6ada1202ce8dfdea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
+<tr class="memitem:aafb14481302adc68e5e5acf5ee0e797c"><td class="memItemLeft" align="right" valign="top"><a id="aafb14481302adc68e5e5acf5ee0e797c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Awake</b> ()</td></tr>
+<tr class="separator:aafb14481302adc68e5e5acf5ee0e797c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab5199fad932829559de1d4f07238975b"><td class="memItemLeft" align="right" valign="top"><a id="ab5199fad932829559de1d4f07238975b"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>Start</b> ()</td></tr>
 <tr class="separator:ab5199fad932829559de1d4f07238975b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6f047fee00d461dbb0ff4560215e7dcd"><td class="memItemLeft" align="right" valign="top"><a id="a6f047fee00d461dbb0ff4560215e7dcd"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>Update</b> ()</td></tr>
 <tr class="separator:a6f047fee00d461dbb0ff4560215e7dcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aafb14481302adc68e5e5acf5ee0e797c"><td class="memItemLeft" align="right" valign="top"><a id="aafb14481302adc68e5e5acf5ee0e797c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Awake</b> ()</td></tr>
-<tr class="separator:aafb14481302adc68e5e5acf5ee0e797c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d641b9b93b143cd11f4ddaa117ad5c8"><td class="memItemLeft" align="right" valign="top"><a id="a0d641b9b93b143cd11f4ddaa117ad5c8"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>ResetTriangles</b> ()</td></tr>
+<tr class="separator:a0d641b9b93b143cd11f4ddaa117ad5c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48cd7421e90306bb265e9b1896bad3c4"><td class="memItemLeft" align="right" valign="top"><a id="a48cd7421e90306bb265e9b1896bad3c4"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>ResetWeight</b> ()</td></tr>
+<tr class="separator:a48cd7421e90306bb265e9b1896bad3c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acbd4498e3005586face9d925a1f0852d"><td class="memItemLeft" align="right" valign="top"><a id="acbd4498e3005586face9d925a1f0852d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>ResetStep</b> ()</td></tr>
+<tr class="separator:acbd4498e3005586face9d925a1f0852d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adbc7b207ed095b401659e0c6fa800088"><td class="memItemLeft" align="right" valign="top"><a id="adbc7b207ed095b401659e0c6fa800088"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>ResetTimer</b> ()</td></tr>
+<tr class="separator:adbc7b207ed095b401659e0c6fa800088"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09e5c7ecbb09c876d2aaabe2afdb5ab8"><td class="memItemLeft" align="right" valign="top"><a id="a09e5c7ecbb09c876d2aaabe2afdb5ab8"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>ResetWin</b> ()</td></tr>
+<tr class="separator:a09e5c7ecbb09c876d2aaabe2afdb5ab8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed5cf85d7e8f10b8e9ee45400667f45f"><td class="memItemLeft" align="right" valign="top"><a id="aed5cf85d7e8f10b8e9ee45400667f45f"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>ResetLoose</b> ()</td></tr>
+<tr class="separator:aed5cf85d7e8f10b8e9ee45400667f45f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7dc5c8f0e0414a3eed2209a4d09c8336"><td class="memItemLeft" align="right" valign="top"><a id="a7dc5c8f0e0414a3eed2209a4d09c8336"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>ResetReady</b> ()</td></tr>
+<tr class="separator:a7dc5c8f0e0414a3eed2209a4d09c8336"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8b6146bb1a04c7c972cd88df4e5dd7c"><td class="memItemLeft" align="right" valign="top"><a id="ac8b6146bb1a04c7c972cd88df4e5dd7c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>ResetLevel</b> ()</td></tr>
+<tr class="separator:ac8b6146bb1a04c7c972cd88df4e5dd7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>Assets/Scripts/GameStore.cs</li>

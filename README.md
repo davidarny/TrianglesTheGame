@@ -2,7 +2,7 @@
 
 ## TODO
 
-- [x] Increasing level
+- [x] ~~Increasing level~~
 
 - [ ] Start menu
 

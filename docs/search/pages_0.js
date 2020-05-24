@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['triangles_20🔺🔻🔺_27',['Triangles 🔺🔻🔺',['../index.html',1,'']]]
+  ['triangles_20🔺🔻🔺_29',['Triangles 🔺🔻🔺',['../index.html',1,'']]]
 ];
