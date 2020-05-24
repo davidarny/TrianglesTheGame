@@ -3,7 +3,7 @@ using System.Collections;
 using System.Linq;
 using UnityEngine;
 
-public class PlayingState : GameState
+public class PlayingState : BaseGameState
 {
     private static readonly int MIN_WEIGHT = 1; // Should be (initial weight - 1)
     private static readonly int MAX_WEIGHT = 12;
@@ -15,26 +15,15 @@ public class PlayingState : GameState
     private GameObject[] triangles;
     private Rotation[] level;
 
-    private MonoBehaviour behaviour;
-    private GameContext game;
-
-    public void Awake() { }
-
-    public void SetContext(MonoBehaviour behaviour, GameContext game)
-    {
-        this.behaviour = behaviour;
-        this.game = game;
-    }
-
     // Start is called before the first frame update
-    void GameState.Start()
+    protected override void DoOnStart()
     {
         BindGameEvents();
         Restart();
     }
 
     // Update is called once per frame
-    void GameState.Update()
+    protected override void DoOnUpdate()
     {
         if (win || loose)
         {
