@@ -6,11 +6,11 @@
 
 - [ ] Start menu
 
-- [ ] Pause & next menus
-
-- [ ] Get help button
+- [ ] Next menu
 
 - [ ] Score
+
+- [ ] Continue from current button
 
 - [x] ~~Preparing and playing states~~
 
