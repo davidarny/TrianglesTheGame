@@ -6,6 +6,7 @@ public class CountdownController : MonoBehaviour
 {
     public bool active = true;
     private int current = 0;
+    private bool preparing = false;
 
     public Text display;
 
@@ -36,11 +37,12 @@ public class CountdownController : MonoBehaviour
     private void BindGameEvents()
     {
         GameEvents.instance.OnWin += DoOnWin;
-        GameEvents.instance.OnCountRestart += DoOnRestart;
+        GameEvents.instance.OnCountRestart += DoOnCountRestart;
     }
 
-    private void DoOnRestart()
+    private void DoOnCountRestart()
     {
+        SetReady();
         Show();
         StopAllCoroutines();
         ResetTimer();
@@ -49,6 +51,7 @@ public class CountdownController : MonoBehaviour
 
     private void DoOnWin()
     {
+        SetPreparing();
         Hide();
         StopAllCoroutines();
         ResetTimer();
@@ -73,7 +76,11 @@ public class CountdownController : MonoBehaviour
 
     private void ResetTimer()
     {
-        current = GameStore.instance.timer + (GameStore.instance.GetAbsoluteWeight() * GameStore.TIMER_STEP);
+        current = GameStore.instance.timer;
+        if (!preparing)
+        {
+            current += GameStore.instance.GetAbsoluteWeight() * GameStore.TIMER_STEP;
+        }
     }
 
     private void DecrementTimer()
@@ -109,5 +116,15 @@ public class CountdownController : MonoBehaviour
     private void Show()
     {
         display.gameObject.SetActive(true);
+    }
+
+    private void SetPreparing()
+    {
+        preparing = true;
+    }
+
+    private void SetReady()
+    {
+        preparing = false;
     }
 }

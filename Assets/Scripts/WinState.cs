@@ -18,7 +18,7 @@ public class WinState : BaseGameState
     {
         BindGameEvents();
 
-        Debug.Log($"========== Win LEVEL={GameStore.instance.weight} STEP={GameStore.instance.step} ==========");
+        Debug.Log($"========== Win LEVEL={GameStore.instance.GetAbsoluteWeight() + 1} STEP={GameStore.instance.step} ==========");
     }
 
     protected override void DoOnUpdate()

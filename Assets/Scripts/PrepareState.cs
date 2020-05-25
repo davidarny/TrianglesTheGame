@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Linq;
 using UnityEngine;
 
 public class PrepareState : BaseGameState
 {
+    private Rotation[] prev = Array.Empty<Rotation>();
+
     public PrepareState(MonoBehaviour behaviour, GameContext game) : base(behaviour, game)
     {
 
@@ -19,12 +22,24 @@ public class PrepareState : BaseGameState
 
     }
 
+    private bool IsSameAsBefore(Rotation[] rotations)
+    {
+        return Enumerable.SequenceEqual(rotations, prev);
+    }
+
     private void Restart()
     {
-        GameStore.instance.SetLevel(LevelGenerator.Create().GetRandomRotations(GameStore.instance.weight));
-        Debug.Log("Rotations[]: " + String.Join(", ", GameStore.instance.level));
+        Rotation[] level = LevelGenerator.Create().GetRandomRotations(GameStore.instance.weight);
+        while (IsSameAsBefore(level))
+        {
+            level = LevelGenerator.Create().GetRandomRotations(GameStore.instance.weight);
+        }
+        prev = level;
 
-        Debug.Log($"========== Preparing LEVEL={GameStore.instance.weight} STEP={GameStore.instance.step} ==========");
+
+        GameStore.instance.SetLevel(level);
+
+        Debug.Log($"========== Preparing LEVEL={GameStore.instance.GetAbsoluteWeight() + 1} STEP={GameStore.instance.step} ==========");
 
         GameStore.instance.SetTriangles(GenerateTriangles(GameStore.instance.level));
     }

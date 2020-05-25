@@ -29,8 +29,6 @@ public class PlayingState : BaseGameState
 
         var rotations = GetCurrentRotations();
         GameStore.instance.SetWin(TestForWin(rotations));
-
-        Debug.Log("Current: " + String.Join(", ", rotations));
     }
 
     private void BindGameEvents()
@@ -43,6 +41,11 @@ public class PlayingState : BaseGameState
         GameEvents.instance.OnCountEnd -= DoOnLoose;
     }
 
+    private bool IsSameAsLevel(Rotation[] rotations)
+    {
+        return Enumerable.SequenceEqual(rotations, GameStore.instance.level);
+    }
+
     private void Restart()
     {
         if (routine != null)
@@ -50,10 +53,13 @@ public class PlayingState : BaseGameState
             behaviour.StopCoroutine(routine);
         }
 
-        Debug.Log($"========== Playing LEVEL={GameStore.instance.weight} STEP={GameStore.instance.step} ==========");
+        Debug.Log($"========== Playing LEVEL={GameStore.instance.GetAbsoluteWeight() + 1} STEP={GameStore.instance.step} ==========");
 
-        // TODO: should check whether rotations not the same as level
-        var rotations = LevelGenerator.Create().GetRandomRotations(GameStore.instance.weight);
+        Rotation[] rotations = new Rotation[GameStore.instance.weight];
+        while (IsSameAsLevel(rotations))
+        {
+            rotations = LevelGenerator.Create().GetRandomRotations(GameStore.instance.weight);
+        }
         GameStore.instance.SetTriangles(GenerateTriangles(rotations));
 
         routine = WatchForWin();
