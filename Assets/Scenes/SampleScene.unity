@@ -219,8 +219,8 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!60 &342621030
-PolygonCollider2D:
+--- !u!61 &342621030
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -242,11 +242,9 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.49681062, y: -0.37136227}
-      - {x: -0.0032913163, y: 0.3688616}
-      - {x: -0.49250904, y: -0.3707368}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!114 &342621031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1020,13 +1018,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cbddf1fbf81b004ba9459183cddea50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weight: 2
-  timer: 5
-  win: 0
-  loose: 0
-  ready: 0
-  triangles: []
-  level: 
 --- !u!1 &1648043609
 GameObject:
   m_ObjectHideFlags: 0
