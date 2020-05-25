@@ -2,16 +2,18 @@
 
 ## TODO
 
-- [x] ~~Increasing level~~
+-   [x] ~~Increasing level~~
 
-- [ ] Start menu
+-   [x] ~~Increasing timer~~
 
-- [ ] Next menu
+-   [ ] Start menu
 
-- [ ] Score
+-   [ ] Next menu
 
-- [ ] Continue from current button
+-   [ ] Score
 
-- [x] ~~Preparing and playing states~~
+-   [ ] Continue from current button
 
-- [x] ~~Basic game mechanics~~
+-   [x] ~~Preparing and playing states~~
+
+-   [x] ~~Basic game mechanics~~

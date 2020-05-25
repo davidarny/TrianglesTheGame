@@ -7,8 +7,8 @@ public class GameStore : MonoBehaviour
     public static readonly int MAX_WEIGHT = 12;
     public static readonly int MAX_STEP = 4;
     public static readonly int WIN_DELAY = 1;
-
-    public static readonly int INITIAL_TIMER = 5;
+    public static readonly int INITIAL_TIMER = 3;
+    public static readonly int TIMER_STEP = 3;
 
     public int weight { get; private set; } = MIN_WEIGHT;
     public int step { get; private set; } = 0;
@@ -169,5 +169,10 @@ public class GameStore : MonoBehaviour
     private void ResetLevel()
     {
         Array.Clear(level, 0, level.Length);
+    }
+
+    public int GetAbsoluteWeight()
+    {
+        return weight - MIN_WEIGHT;
     }
 }

@@ -73,7 +73,7 @@ public class CountdownController : MonoBehaviour
 
     private void ResetTimer()
     {
-        current = GameStore.instance.timer;
+        current = GameStore.instance.timer + (GameStore.instance.GetAbsoluteWeight() * GameStore.TIMER_STEP);
     }
 
     private void DecrementTimer()
