@@ -29,7 +29,7 @@ public abstract class BaseGameState : GameState
 
     protected GameObject[] GenerateTriangles(Rotation[] rotations)
     {
-        var generator = new TriangleGenerator(game.GridLayout.transform, game.TriangleTemplate);
+        var generator = new TriangleGenerator(game.GameGrid.transform, game.TriangleTemplate);
         return generator.Create(rotations);
     }
 

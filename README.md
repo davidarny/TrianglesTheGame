@@ -11,14 +11,19 @@
 -   [ ] Prepare overlay
 
     -   [x] ~~Design~~
-    -   [ ] Scripting
+    -   [x] ~~Scripting~~
 
 -   [ ] Start overlay
 
     -   [x] ~~Design~~
-    -   [ ] Scripting
+    -   [x] ~~Scripting~~
 
 -   [ ] Next overlay
+
+    -   [x] ~~Design~~
+    -   [x] ~~Scripting~~
+
+-   [ ] Win overlay
 
     -   [x] ~~Design~~
     -   [ ] Scripting

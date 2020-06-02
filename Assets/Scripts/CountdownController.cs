@@ -18,14 +18,12 @@ public class CountdownController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        BindGameEvents();
-        Restart();
+        GameEvents.instance.OnCountRestart += DoOnCountRestart;
     }
 
     // Update is called once per frame
     void Update()
     {
-
     }
 
     private void Restart()
@@ -34,25 +32,10 @@ public class CountdownController : MonoBehaviour
         StartCoroutine(CountdownStart());
     }
 
-    private void BindGameEvents()
-    {
-        GameEvents.instance.OnWin += DoOnWin;
-        GameEvents.instance.OnCountRestart += DoOnCountRestart;
-    }
-
     private void DoOnCountRestart()
     {
         SetReady();
         Show();
-        StopAllCoroutines();
-        ResetTimer();
-        Restart();
-    }
-
-    private void DoOnWin()
-    {
-        SetPreparing();
-        Hide();
         StopAllCoroutines();
         ResetTimer();
         Restart();

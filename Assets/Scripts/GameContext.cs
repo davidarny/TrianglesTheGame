@@ -2,7 +2,20 @@
 
 public interface GameContext
 {
-    GameObject GridLayout { get; }
+
+    GameObject GameOverlay { get; }
+
+    GameObject WinOverlay { get; }
+
+    GameObject FailOverlay { get; }
+
+    GameObject MenuOverlay { get; }
+
+    GameObject RememberOverlay { get; }
+
+    GameObject RepeatOverlay { get; }
+
+    GameObject GameGrid { get; }
 
     GameObject TriangleTemplate { get; }
 

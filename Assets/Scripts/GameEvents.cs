@@ -8,13 +8,11 @@ public class GameEvents : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
     }
 
     // Update is called once per frame
     void Update()
     {
-
     }
 
     private void Awake()
@@ -28,6 +26,21 @@ public class GameEvents : MonoBehaviour
             Destroy(this);
         }
     }
+
+    /* #################### Menu Events #################### */
+
+    public event Action OnMenu;
+
+    public void TriggerMenu()
+    {
+        if (OnMenu != null)
+        {
+            OnMenu();
+        }
+    }
+
+
+    /* #################### Win Events #################### */
 
     public event Action OnWin;
 
@@ -49,6 +62,8 @@ public class GameEvents : MonoBehaviour
         }
     }
 
+    /* #################### Fail Events #################### */
+
     public event Action OnLoose;
 
     public void TriggerLoose()
@@ -69,13 +84,15 @@ public class GameEvents : MonoBehaviour
         }
     }
 
-    public event Action OnRestart;
+    /* #################### Counter Events #################### */
 
-    public void TriggerRestart()
+    public event Action OnCounterStop;
+
+    public void TriggerCounterStop()
     {
-        if (OnRestart != null)
+        if (OnCounterStop != null)
         {
-            OnRestart();
+            OnCounterStop();
         }
     }
 
@@ -89,13 +106,69 @@ public class GameEvents : MonoBehaviour
         }
     }
 
-    public event Action OnReady;
+    /* #################### Prepare Events #################### */
 
-    public void TriggerReady()
+    public event Action OnPrepare;
+
+    public void TriggerPrepare()
     {
-        if (OnReady != null)
+        if (OnPrepare != null)
         {
-            OnReady();
+            OnPrepare();
+        }
+    }
+
+    public event Action OnPrepareEnd;
+
+    public void TriggerPrepareEnd()
+    {
+        if (OnPrepareEnd != null)
+        {
+            OnPrepareEnd();
+        }
+    }
+
+    /* #################### Remember Events #################### */
+
+    public event Action OnRemember;
+
+    public void TriggerRemember()
+    {
+        if (OnRemember != null)
+        {
+            OnRemember();
+        }
+    }
+
+    public event Action OnRememberEnd;
+
+    public void TriggerRememberEnd()
+    {
+        if (OnRememberEnd != null)
+        {
+            OnRememberEnd();
+        }
+    }
+
+    /* #################### Repeat Events #################### */
+
+    public event Action OnRepeat;
+
+    public void TriggerRepeat()
+    {
+        if (OnRepeat != null)
+        {
+            OnRepeat();
+        }
+    }
+
+    public event Action OnRepeatEnd;
+
+    public void TriggerRepeatEnd()
+    {
+        if (OnRepeatEnd != null)
+        {
+            OnRepeatEnd();
         }
     }
 }

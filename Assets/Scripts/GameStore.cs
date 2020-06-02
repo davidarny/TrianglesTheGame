@@ -6,6 +6,8 @@ public class GameStore : MonoBehaviour
     public static readonly int MIN_WEIGHT = 2;
     public static readonly int MAX_WEIGHT = 12;
     public static readonly int MAX_STEP = 4;
+    public static readonly int REMEMBER_DELAY = 1;
+    public static readonly int REPEAT_DELAY = 1;
     public static readonly int WIN_DELAY = 1;
     public static readonly int INITIAL_TIMER = 3;
     public static readonly int TIMER_STEP = 3;
@@ -17,8 +19,8 @@ public class GameStore : MonoBehaviour
     public bool loose { get; private set; } = false;
     public bool ready { get; private set; } = false;
 
-    public GameObject[] triangles { get; private set; }
-    public Rotation[] level { get; private set; }
+    public GameObject[] triangles { get; private set; } = Array.Empty<GameObject>();
+    public Rotation[] level { get; private set; } = Array.Empty<Rotation>();
 
     public static GameStore instance { get; private set; }
 
@@ -37,26 +39,18 @@ public class GameStore : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
     }
 
     // Update is called once per frame
     void Update()
     {
-
     }
 
-    public void ResetAfterReady()
-    {
-        ResetTriangles();
-        ResetTimer();
-    }
+    /* #################### Prepare State #################### */
 
-    public void ResetAfterRestart()
+    public void ResetAfterPrepare()
     {
         ResetTriangles();
-        ResetWeight();
-        ResetStep();
         ResetTimer();
         ResetWin();
         ResetLoose();
@@ -64,6 +58,14 @@ public class GameStore : MonoBehaviour
         ResetTriangles();
         ResetLevel();
     }
+
+    public void ResetAfterPrepareEnd()
+    {
+        ResetTriangles();
+        ResetTimer();
+    }
+
+    /* #################### Win State #################### */
 
     public void ResetAfterWin()
     {
@@ -78,6 +80,60 @@ public class GameStore : MonoBehaviour
         ResetWin();
         ResetLoose();
         ResetReady();
+    }
+
+    /* #################### Remember State #################### */
+
+    public void ResetAfterRemember()
+    {
+        timer = REMEMBER_DELAY;
+    }
+
+    public void ResetAfterRememberEnd()
+    {
+        ResetTimer();
+    }
+
+    /* #################### Repeat State #################### */
+
+    public void ResetAfterRepeat()
+    {
+        timer = REPEAT_DELAY;
+    }
+
+    public void ResetAfterRepeatEnd()
+    {
+        ResetTimer();
+    }
+
+    /* #################### Fail State #################### */
+
+    public void ResetAfterLoose()
+    {
+        ResetTriangles();
+        ResetWeight();
+        ResetStep();
+        ResetTimer();
+        ResetWin();
+        ResetLoose();
+        ResetReady();
+        ResetTriangles();
+        ResetLevel();
+    }
+
+    /* #################### Menu State #################### */
+
+    public void ResetAfterMenu()
+    {
+        ResetTriangles();
+        ResetWeight();
+        ResetStep();
+        ResetTimer();
+        ResetWin();
+        ResetLoose();
+        ResetReady();
+        ResetTriangles();
+        ResetLevel();
     }
 
     public void NextWeight()

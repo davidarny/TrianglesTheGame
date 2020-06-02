@@ -8,18 +8,19 @@ public class PrepareState : BaseGameState
 
     public PrepareState(MonoBehaviour behaviour, GameContext game) : base(behaviour, game)
     {
-
     }
 
     protected override void DoOnStart()
     {
+        game.GameOverlay.SetActive(true);
         Restart();
-        BindGameEvents();
+        GameEvents.instance.OnCountEnd += DoOnCountEnd;
+
+        Debug.Log($"========== PrepareState LEVEL={GameStore.instance.GetAbsoluteWeight() + 1} STEP={GameStore.instance.step} ==========");
     }
 
     protected override void DoOnUpdate()
     {
-
     }
 
     private bool IsSameAsBefore(Rotation[] rotations)
@@ -38,26 +39,20 @@ public class PrepareState : BaseGameState
 
 
         GameStore.instance.SetLevel(level);
+        GameStore.instance.SetTriangles(GenerateTriangles(GameStore.instance.level));
 
         Debug.Log($"========== Preparing LEVEL={GameStore.instance.GetAbsoluteWeight() + 1} STEP={GameStore.instance.step} ==========");
-
-        GameStore.instance.SetTriangles(GenerateTriangles(GameStore.instance.level));
-    }
-
-    private void BindGameEvents()
-    {
-        GameEvents.instance.OnCountEnd += DoOnReady;
     }
 
     public override void Unbind()
     {
-        GameEvents.instance.OnCountEnd -= DoOnReady;
+        game.GameOverlay.SetActive(false);
+        GameEvents.instance.OnCountEnd -= DoOnCountEnd;
     }
 
-    private void DoOnReady()
+    private void DoOnCountEnd()
     {
         GameStore.instance.SetReady(true);
-        GameEvents.instance.TriggerReady();
-        GameEvents.instance.OnCountEnd -= DoOnReady;
+        GameEvents.instance.TriggerPrepareEnd();
     }
 }

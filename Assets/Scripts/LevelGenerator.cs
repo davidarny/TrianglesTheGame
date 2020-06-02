@@ -9,7 +9,6 @@ public class LevelGenerator
 
     private LevelGenerator()
     {
-
     }
 
     private readonly Random random = new Random();

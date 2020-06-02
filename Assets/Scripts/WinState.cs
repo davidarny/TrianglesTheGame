@@ -1,34 +1,26 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class WinState : BaseGameState
 {
     public WinState(MonoBehaviour behaviour, GameContext game) : base(behaviour, game)
     {
-
     }
 
     public override void Unbind()
     {
+        game.GameOverlay.SetActive(false);
         GameEvents.instance.OnCountEnd -= DoOnWinEnd;
     }
 
     protected override void DoOnStart()
     {
-        BindGameEvents();
-
-        Debug.Log($"========== Win LEVEL={GameStore.instance.GetAbsoluteWeight() + 1} STEP={GameStore.instance.step} ==========");
+        game.GameOverlay.SetActive(true);
+        GameEvents.instance.OnCountEnd += DoOnWinEnd;
+        Debug.Log($"========== WinState LEVEL={GameStore.instance.GetAbsoluteWeight() + 1} STEP={GameStore.instance.step} ==========");
     }
 
     protected override void DoOnUpdate()
     {
-
-    }
-
-    private void BindGameEvents()
-    {
-        GameEvents.instance.OnCountEnd += DoOnWinEnd;
     }
 
 

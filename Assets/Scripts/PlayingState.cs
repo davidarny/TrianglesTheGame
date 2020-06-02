@@ -9,17 +9,15 @@ public class PlayingState : BaseGameState
 
     public PlayingState(MonoBehaviour behaviour, GameContext game) : base(behaviour, game)
     {
-
     }
 
-    // Start is called before the first frame update
     protected override void DoOnStart()
     {
-        BindGameEvents();
+        game.GameOverlay.SetActive(true);
         Restart();
+        GameEvents.instance.OnCountEnd += DoOnLoose;
     }
 
-    // Update is called once per frame
     protected override void DoOnUpdate()
     {
         if (GameStore.instance.win || GameStore.instance.loose)
@@ -31,13 +29,9 @@ public class PlayingState : BaseGameState
         GameStore.instance.SetWin(TestForWin(rotations));
     }
 
-    private void BindGameEvents()
-    {
-        GameEvents.instance.OnCountEnd += DoOnLoose;
-    }
-
     public override void Unbind()
     {
+        game.GameOverlay.SetActive(false);
         GameEvents.instance.OnCountEnd -= DoOnLoose;
     }
 
@@ -53,8 +47,6 @@ public class PlayingState : BaseGameState
             behaviour.StopCoroutine(routine);
         }
 
-        Debug.Log($"========== Playing LEVEL={GameStore.instance.GetAbsoluteWeight() + 1} STEP={GameStore.instance.step} ==========");
-
         Rotation[] rotations = new Rotation[GameStore.instance.weight];
         while (IsSameAsLevel(rotations))
         {
@@ -64,6 +56,8 @@ public class PlayingState : BaseGameState
 
         routine = WatchForWin();
         behaviour.StartCoroutine(routine);
+
+        Debug.Log($"========== PlayingState LEVEL={GameStore.instance.GetAbsoluteWeight() + 1} STEP={GameStore.instance.step} ==========");
     }
 
     private Rotation[] GetCurrentRotations()

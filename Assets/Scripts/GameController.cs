@@ -2,7 +2,14 @@
 
 public class GameController : MonoBehaviour
 {
-    public GameObject GridLayout;
+    public GameObject GameOverlay;
+    public GameObject WinOverlay;
+    public GameObject FailOverlay;
+    public GameObject MenuOverlay;
+    public GameObject RememberOverlay;
+    public GameObject RepeatOverlay;
+    public GameObject GameGrid;
+
     public GameObject TriangleTemplate;
 
     public Sprite TriangleSuccess;
@@ -11,6 +18,10 @@ public class GameController : MonoBehaviour
     private PrepareState prepare;
     private PlayingState playing;
     private WinState win;
+    private MenuState menu;
+    private RememberState remember;
+    private RepeatState repeat;
+    private FailState fail;
     private GameState state;
 
     public GameController()
@@ -18,6 +29,10 @@ public class GameController : MonoBehaviour
         prepare = new PrepareState(this, new GameController.Context(this));
         playing = new PlayingState(this, new GameController.Context(this));
         win = new WinState(this, new GameController.Context(this));
+        menu = new MenuState(this, new GameController.Context(this));
+        remember = new RememberState(this, new GameController.Context(this));
+        repeat = new RepeatState(this, new GameController.Context(this));
+        fail = new FailState(this, new GameController.Context(this));
     }
 
     internal class Context : GameContext
@@ -29,22 +44,38 @@ public class GameController : MonoBehaviour
             this.controller = controller;
         }
 
-        public GameObject GridLayout => controller.GridLayout;
-
+        public GameObject GameGrid => controller.GameGrid;
         public GameObject TriangleTemplate => controller.TriangleTemplate;
-
         public Sprite TriangleSuccess => controller.TriangleSuccess;
-
         public Sprite TriangleError => controller.TriangleError;
+        public GameObject GameOverlay => controller.GameOverlay;
+        public GameObject WinOverlay => controller.WinOverlay;
+        public GameObject FailOverlay => controller.FailOverlay;
+        public GameObject MenuOverlay => controller.MenuOverlay;
+        public GameObject RememberOverlay => controller.RememberOverlay;
+        public GameObject RepeatOverlay => controller.RepeatOverlay;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        BindGameEvents();
+        GameEvents.instance.OnMenu += DoOnMenu;
 
-        state = prepare;
-        state.Start();
+        GameEvents.instance.OnPrepare += DoOnPrepare;
+        GameEvents.instance.OnPrepareEnd += DoOnPrepareEnd;
+
+        GameEvents.instance.OnWin += DoOnWin;
+        GameEvents.instance.OnWinEnd += DoOnWinEnd;
+
+        GameEvents.instance.OnLoose += DoOnLoose;
+
+        GameEvents.instance.OnRemember += DoOnRemember;
+        GameEvents.instance.OnRememberEnd += DoOnRememberEnd;
+
+        GameEvents.instance.OnRepeat += DoOnRepeat;
+        GameEvents.instance.OnRepeatEnd += DoOnRepeatEnd;
+
+        DoOnMenu();
     }
 
     // Update is called once per frame
@@ -53,17 +84,72 @@ public class GameController : MonoBehaviour
         state.Update();
     }
 
-    private void BindGameEvents()
+    private void DoOnMenu()
     {
-        GameEvents.instance.OnReady += DoOnReady;
-        GameEvents.instance.OnRestart += DoOnRestart;
-        GameEvents.instance.OnWin += DoOnWin;
-        GameEvents.instance.OnWinEnd += DoOnWinEnd;
+        GameStore.instance.ResetAfterMenu();
+
+        if (state != null)
+        {
+            state.Unbind();
+        }
+        state = menu;
+        state.Start();
     }
 
-    private void DoOnReady()
+    /* #################### Remember State #################### */
+
+    private void DoOnRemember()
     {
-        GameStore.instance.ResetAfterReady();
+        GameStore.instance.ResetAfterRemember();
+
+        state.Unbind();
+        state = remember;
+        state.Start();
+
+        GameEvents.instance.TriggerCountRestart();
+    }
+
+    private void DoOnRememberEnd()
+    {
+        GameStore.instance.ResetAfterRememberEnd();
+        GameEvents.instance.TriggerPrepare();
+    }
+
+    /* #################### Prepare State #################### */
+
+    private void DoOnPrepare()
+    {
+        GameStore.instance.ResetAfterPrepare();
+
+        state.Unbind();
+        state = prepare;
+        state.Start();
+
+        GameEvents.instance.TriggerCountRestart();
+    }
+
+    private void DoOnPrepareEnd()
+    {
+        GameStore.instance.ResetAfterPrepareEnd();
+        GameEvents.instance.TriggerRepeat();
+    }
+
+    /* #################### Repeat State #################### */
+
+    private void DoOnRepeat()
+    {
+        GameStore.instance.ResetAfterRepeat();
+
+        state.Unbind();
+        state = repeat;
+        state.Start();
+
+        GameEvents.instance.TriggerCountRestart();
+    }
+
+    private void DoOnRepeatEnd()
+    {
+        GameStore.instance.ResetAfterRepeatEnd();
 
         state.Unbind();
         state = playing;
@@ -71,6 +157,8 @@ public class GameController : MonoBehaviour
 
         GameEvents.instance.TriggerCountRestart();
     }
+
+    /* #################### Win State #################### */
 
     private void DoOnWin()
     {
@@ -86,22 +174,19 @@ public class GameController : MonoBehaviour
     private void DoOnWinEnd()
     {
         GameStore.instance.ResetAfterWinEnd();
-
-        state.Unbind();
-        state = prepare;
-        state.Start();
-
-        GameEvents.instance.TriggerCountRestart();
+        GameEvents.instance.TriggerRemember();
     }
 
-    private void DoOnRestart()
+    /* #################### Fail State #################### */
+
+    private void DoOnLoose()
     {
-        GameStore.instance.ResetAfterRestart();
+        GameStore.instance.ResetAfterLoose();
 
         state.Unbind();
-        state = prepare;
+        state = fail;
         state.Start();
 
-        GameEvents.instance.TriggerCountRestart();
+        GameEvents.instance.TriggerCounterStop();
     }
 }
