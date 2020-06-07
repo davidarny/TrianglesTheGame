@@ -9,6 +9,7 @@ public class GameStore : MonoBehaviour
     public static readonly int REMEMBER_DELAY = 1;
     public static readonly int REPEAT_DELAY = 1;
     public static readonly int WIN_DELAY = 1;
+    public static readonly int LOOSE_DELAY = 1;
     public static readonly int INITIAL_TIMER = 3;
     public static readonly int TIMER_STEP = 3;
 
@@ -109,6 +110,11 @@ public class GameStore : MonoBehaviour
     /* #################### Fail State #################### */
 
     public void ResetAfterLoose()
+    {
+        timer = LOOSE_DELAY;
+    }
+
+    public void ResetAfterLooseEnd()
     {
         ResetTriangles();
         ResetWeight();

@@ -187,6 +187,11 @@ public class GameController : MonoBehaviour
         state = fail;
         state.Start();
 
-        GameEvents.instance.TriggerCounterStop();
+        GameEvents.instance.TriggerCountRestart();
+    }
+
+    private void DoOnLooseEnd()
+    {
+        GameStore.instance.ResetAfterLooseEnd();
     }
 }

@@ -74,6 +74,18 @@ public class GameEvents : MonoBehaviour
         }
     }
 
+    public event Action OnLooseEnd;
+
+    public void TriggerLooseEnd()
+    {
+        if (OnLooseEnd != null)
+        {
+            OnLooseEnd();
+        }
+    }
+
+    /* #################### Counter Events #################### */
+
     public event Action OnCountEnd;
 
     public void TriggerCountEnd()
@@ -83,8 +95,6 @@ public class GameEvents : MonoBehaviour
             OnCountEnd();
         }
     }
-
-    /* #################### Counter Events #################### */
 
     public event Action OnCounterStop;
 
