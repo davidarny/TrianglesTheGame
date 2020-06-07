@@ -57,7 +57,7 @@ public class PlayingState : BaseGameState
         routine = WatchForWin();
         behaviour.StartCoroutine(routine);
 
-        Debug.Log($"========== PlayingState LEVEL={GameStore.instance.GetAbsoluteWeight() + 1} STEP={GameStore.instance.step} ==========");
+        LogUtils.LogState(GetType().Name);
     }
 
     private Rotation[] GetCurrentRotations()

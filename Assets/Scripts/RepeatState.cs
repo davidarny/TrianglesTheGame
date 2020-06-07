@@ -16,7 +16,8 @@ public class RepeatState : BaseGameState
     {
         game.RepeatOverlay.SetActive(true);
         GameEvents.instance.OnCountEnd += DoOnCountEnd;
-        Debug.Log($"========== RepeatState LEVEL={GameStore.instance.GetAbsoluteWeight() + 1} STEP={GameStore.instance.step} ==========");
+
+        LogUtils.LogState(GetType().Name);
     }
 
     protected override void DoOnUpdate()

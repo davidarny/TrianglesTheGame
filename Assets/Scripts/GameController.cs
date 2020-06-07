@@ -68,6 +68,7 @@ public class GameController : MonoBehaviour
         GameEvents.instance.OnWinEnd += DoOnWinEnd;
 
         GameEvents.instance.OnLoose += DoOnLoose;
+        GameEvents.instance.OnLooseEnd += DoOnLooseEnd;
 
         GameEvents.instance.OnRemember += DoOnRemember;
         GameEvents.instance.OnRememberEnd += DoOnRememberEnd;
@@ -174,7 +175,6 @@ public class GameController : MonoBehaviour
     private void DoOnWinEnd()
     {
         GameStore.instance.ResetAfterWinEnd();
-        GameEvents.instance.TriggerRemember();
     }
 
     /* #################### Fail State #################### */

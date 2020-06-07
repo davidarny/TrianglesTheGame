@@ -13,10 +13,8 @@ public class PrepareState : BaseGameState
     protected override void DoOnStart()
     {
         game.GameOverlay.SetActive(true);
-        Restart();
         GameEvents.instance.OnCountEnd += DoOnCountEnd;
-
-        Debug.Log($"========== PrepareState LEVEL={GameStore.instance.GetAbsoluteWeight() + 1} STEP={GameStore.instance.step} ==========");
+        Restart();
     }
 
     protected override void DoOnUpdate()
@@ -41,7 +39,7 @@ public class PrepareState : BaseGameState
         GameStore.instance.SetLevel(level);
         GameStore.instance.SetTriangles(GenerateTriangles(GameStore.instance.level));
 
-        Debug.Log($"========== Preparing LEVEL={GameStore.instance.GetAbsoluteWeight() + 1} STEP={GameStore.instance.step} ==========");
+        LogUtils.LogState(GetType().Name);
     }
 
     public override void Unbind()

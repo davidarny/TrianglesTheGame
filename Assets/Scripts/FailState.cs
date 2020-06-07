@@ -17,7 +17,9 @@ public class FailState : BaseGameState
     {
         game.GameOverlay.SetActive(true);
         GameEvents.instance.OnCountEnd += DoOnLooseEnd;
-        Debug.Log($"========== FailState LEVEL={GameStore.instance.GetAbsoluteWeight() + 1} STEP={GameStore.instance.step} ==========");
+
+        LogUtils.LogState(GetType().Name);
+
     }
 
     protected override void DoOnUpdate()

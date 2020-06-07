@@ -14,7 +14,8 @@ public class MenuState : BaseGameState
     protected override void DoOnStart()
     {
         game.MenuOverlay.SetActive(true);
-        Debug.Log($"========== MenuState LEVEL={GameStore.instance.GetAbsoluteWeight() + 1} STEP={GameStore.instance.step} ==========");
+
+        LogUtils.LogState(GetType().Name);
     }
 
     protected override void DoOnUpdate()

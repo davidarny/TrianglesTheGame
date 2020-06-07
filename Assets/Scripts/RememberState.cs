@@ -17,7 +17,8 @@ public class RememberState : BaseGameState
     {
         game.RememberOverlay.SetActive(true);
         GameEvents.instance.OnCountEnd += DoOnCountEnd;
-        Debug.Log($"========== RememberState LEVEL={GameStore.instance.GetAbsoluteWeight() + 1} STEP={GameStore.instance.step} ==========");
+
+        LogUtils.LogState(GetType().Name);
     }
 
     protected override void DoOnUpdate()

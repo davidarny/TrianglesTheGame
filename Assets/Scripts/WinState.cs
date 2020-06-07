@@ -9,6 +9,7 @@ public class WinState : BaseGameState
     public override void Unbind()
     {
         game.GameOverlay.SetActive(false);
+        game.WinOverlay.SetActive(false);
         GameEvents.instance.OnCountEnd -= DoOnWinEnd;
     }
 
@@ -16,7 +17,8 @@ public class WinState : BaseGameState
     {
         game.GameOverlay.SetActive(true);
         GameEvents.instance.OnCountEnd += DoOnWinEnd;
-        Debug.Log($"========== WinState LEVEL={GameStore.instance.GetAbsoluteWeight() + 1} STEP={GameStore.instance.step} ==========");
+
+        LogUtils.LogState(GetType().Name);
     }
 
     protected override void DoOnUpdate()
@@ -26,6 +28,8 @@ public class WinState : BaseGameState
 
     private void DoOnWinEnd()
     {
+        game.GameOverlay.SetActive(false);
+        game.WinOverlay.SetActive(true);
         GameEvents.instance.TriggerWinEnd();
     }
 }
