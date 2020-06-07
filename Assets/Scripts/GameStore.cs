@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class GameStore : MonoBehaviour
 {
-    public static readonly int SCORE_STEP = 30;
+    public static readonly int SCORE_STEP = 10;
     public static readonly int MIN_WEIGHT = 2;
     public static readonly int MAX_WEIGHT = 12;
     public static readonly int MAX_STEP = 4;
@@ -168,7 +168,7 @@ public class GameStore : MonoBehaviour
 
     private void NextStep()
     {
-        if (step == MAX_STEP - 1)
+        if (IsEndOfLevel())
         {
             step = 0;
             NextWeight();
@@ -215,7 +215,7 @@ public class GameStore : MonoBehaviour
 
     private void ResetTimer()
     {
-        timer = INITIAL_TIMER;
+        timer = INITIAL_TIMER + (GetAbsoluteWeight() * TIMER_STEP);
     }
 
     private void ResetWin()
@@ -245,11 +245,26 @@ public class GameStore : MonoBehaviour
 
     private void NextScore()
     {
-        score += SCORE_STEP;
+        score += GetNextScore();
+    }
+
+    public int GetNextScore()
+    {
+        int multiplier = 1;
+        if (IsEndOfLevel())
+        {
+            multiplier = 2;
+        }
+        return SCORE_STEP * (GetAbsoluteWeight() + 1) * multiplier;
     }
 
     private void ResetScore()
     {
         score = 0;
+    }
+
+    public bool IsEndOfLevel()
+    {
+        return step == MAX_STEP - 1;
     }
 }

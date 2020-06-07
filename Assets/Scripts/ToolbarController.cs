@@ -6,7 +6,6 @@ public class ToolbarController : MonoBehaviour
 {
     public bool active = true;
     private int current = 0;
-    private bool preparing = false;
 
     public Text display;
     public Text score;
@@ -35,7 +34,6 @@ public class ToolbarController : MonoBehaviour
 
     private void DoOnCountRestart()
     {
-        SetReady();
         Show();
         StopAllCoroutines();
         ResetTimer();
@@ -61,10 +59,7 @@ public class ToolbarController : MonoBehaviour
     private void ResetTimer()
     {
         current = GameStore.instance.timer;
-        if (!preparing)
-        {
-            current += GameStore.instance.GetAbsoluteWeight() * GameStore.TIMER_STEP;
-        }
+
     }
 
     private void DecrementTimer()
@@ -101,15 +96,5 @@ public class ToolbarController : MonoBehaviour
     private void Show()
     {
         display.gameObject.SetActive(true);
-    }
-
-    private void SetPreparing()
-    {
-        preparing = true;
-    }
-
-    private void SetReady()
-    {
-        preparing = false;
     }
 }
