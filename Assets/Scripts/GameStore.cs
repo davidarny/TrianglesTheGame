@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class GameStore : MonoBehaviour
 {
+    public static readonly int SCORE_STEP = 30;
     public static readonly int MIN_WEIGHT = 2;
     public static readonly int MAX_WEIGHT = 12;
     public static readonly int MAX_STEP = 4;
@@ -13,6 +14,7 @@ public class GameStore : MonoBehaviour
     public static readonly int INITIAL_TIMER = 3;
     public static readonly int TIMER_STEP = 3;
 
+    public int score { get; private set; } = 0;
     public int weight { get; private set; } = MIN_WEIGHT;
     public int step { get; private set; } = 0;
     public int timer { get; private set; } = INITIAL_TIMER;
@@ -81,6 +83,7 @@ public class GameStore : MonoBehaviour
         ResetWin();
         ResetLoose();
         ResetReady();
+        NextScore();
     }
 
     /* #################### Remember State #################### */
@@ -125,6 +128,7 @@ public class GameStore : MonoBehaviour
         ResetReady();
         ResetTriangles();
         ResetLevel();
+        ResetScore();
     }
 
     /* #################### Menu State #################### */
@@ -140,6 +144,7 @@ public class GameStore : MonoBehaviour
         ResetReady();
         ResetTriangles();
         ResetLevel();
+        ResetScore();
     }
 
     public void NextWeight()
@@ -161,7 +166,7 @@ public class GameStore : MonoBehaviour
         this.loose = loose;
     }
 
-    public void NextStep()
+    private void NextStep()
     {
         if (step == MAX_STEP - 1)
         {
@@ -236,5 +241,15 @@ public class GameStore : MonoBehaviour
     public int GetAbsoluteWeight()
     {
         return weight - MIN_WEIGHT;
+    }
+
+    private void NextScore()
+    {
+        score += SCORE_STEP;
+    }
+
+    private void ResetScore()
+    {
+        score = 0;
     }
 }

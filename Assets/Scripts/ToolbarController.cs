@@ -2,13 +2,14 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CountdownController : MonoBehaviour
+public class ToolbarController : MonoBehaviour
 {
     public bool active = true;
     private int current = 0;
     private bool preparing = false;
 
     public Text display;
+    public Text score;
 
     void Awake()
     {
@@ -79,6 +80,7 @@ public class CountdownController : MonoBehaviour
     private void UpdateText()
     {
         display.text = current.ToString();
+        score.text = GameStore.instance.score.ToString();
     }
 
     private void SetActive()
