@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['menuhandler_34',['MenuHandler',['../class_menu_handler.html',1,'']]],
-  ['menustate_35',['MenuState',['../class_menu_state.html',1,'']]]
+  ['levelgenerator_34',['LevelGenerator',['../class_level_generator.html',1,'']]],
+  ['logutils_35',['LogUtils',['../class_log_utils.html',1,'']]]
 ];

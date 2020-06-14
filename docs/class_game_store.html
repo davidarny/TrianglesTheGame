@@ -23,7 +23,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Triangles
-   &#160;<span id="projectnumber">0.0.5_beta</span>
+   &#160;<span id="projectnumber">0.0.7_beta</span>
    </div>
   </td>
  </tr>
@@ -85,6 +85,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a2a73fb0d8ed1e059a76d5d07e2509fe8"><td class="memItemLeft" align="right" valign="top"><a id="a2a73fb0d8ed1e059a76d5d07e2509fe8"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>ResetAfterPrepare</b> ()</td></tr>
 <tr class="separator:a2a73fb0d8ed1e059a76d5d07e2509fe8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe0f07c605b285e924c4915a3dc2ff89"><td class="memItemLeft" align="right" valign="top"><a id="abe0f07c605b285e924c4915a3dc2ff89"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>ResetAfterHelp</b> ()</td></tr>
+<tr class="separator:abe0f07c605b285e924c4915a3dc2ff89"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1921cd7a73ce3f298626b2ae6235edc4"><td class="memItemLeft" align="right" valign="top"><a id="a1921cd7a73ce3f298626b2ae6235edc4"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>ResetAfterPrepareEnd</b> ()</td></tr>
 <tr class="separator:a1921cd7a73ce3f298626b2ae6235edc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -142,6 +145,15 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>GetNextScore</b> ()</t
 <tr class="memitem:a55124320b4b28ef6b0541e6952cf0b8e"><td class="memItemLeft" align="right" valign="top"><a id="a55124320b4b28ef6b0541e6952cf0b8e"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsEndOfLevel</b> ()</td></tr>
 <tr class="separator:a55124320b4b28ef6b0541e6952cf0b8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02ccb5912e3da5cbb4e49d2d616226b1"><td class="memItemLeft" align="right" valign="top"><a id="a02ccb5912e3da5cbb4e49d2d616226b1"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>BuyHelp</b> ()</td></tr>
+<tr class="separator:a02ccb5912e3da5cbb4e49d2d616226b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b47a327d70fe76be50c9d0e3f8a8e66"><td class="memItemLeft" align="right" valign="top"><a id="a4b47a327d70fe76be50c9d0e3f8a8e66"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>LockLevel</b> ()</td></tr>
+<tr class="separator:a4b47a327d70fe76be50c9d0e3f8a8e66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a706f4b17906b319310d040f00814666d"><td class="memItemLeft" align="right" valign="top"><a id="a706f4b17906b319310d040f00814666d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>UnlockLevel</b> ()</td></tr>
+<tr class="separator:a706f4b17906b319310d040f00814666d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
@@ -175,6 +187,9 @@ static readonly int&#160;</td><td class="memItemRight" valign="bottom"><b>INITIA
 <tr class="memitem:abc6fe6e1d1c05981045b35c94ca625c1"><td class="memItemLeft" align="right" valign="top"><a id="abc6fe6e1d1c05981045b35c94ca625c1"></a>
 static readonly int&#160;</td><td class="memItemRight" valign="bottom"><b>TIMER_STEP</b> = 3</td></tr>
 <tr class="separator:abc6fe6e1d1c05981045b35c94ca625c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d26c586b6233954c903380dad416f96"><td class="memItemLeft" align="right" valign="top"><a id="a3d26c586b6233954c903380dad416f96"></a>
+static readonly int&#160;</td><td class="memItemRight" valign="bottom"><b>HELP_PRICE</b> = 0</td></tr>
+<tr class="separator:a3d26c586b6233954c903380dad416f96"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
@@ -199,6 +214,9 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>loose</b> = false<cod
 <tr class="memitem:a9e5bb2835ca23ab119ebb4547d9e27ba"><td class="memItemLeft" align="right" valign="top"><a id="a9e5bb2835ca23ab119ebb4547d9e27ba"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>ready</b> = false<code> [get, private set]</code></td></tr>
 <tr class="separator:a9e5bb2835ca23ab119ebb4547d9e27ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a361772da2d255c6966b16f4eef9819b5"><td class="memItemLeft" align="right" valign="top"><a id="a361772da2d255c6966b16f4eef9819b5"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>preserve</b> = false<code> [get, private set]</code></td></tr>
+<tr class="separator:a361772da2d255c6966b16f4eef9819b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acbdc80da7f9b2cb3339d7a35161156e4"><td class="memItemLeft" align="right" valign="top"><a id="acbdc80da7f9b2cb3339d7a35161156e4"></a>
 GameObject[]&#160;</td><td class="memItemRight" valign="bottom"><b>triangles</b> = Array.Empty&lt;GameObject&gt;()<code> [get, private set]</code></td></tr>
 <tr class="separator:acbdc80da7f9b2cb3339d7a35161156e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
