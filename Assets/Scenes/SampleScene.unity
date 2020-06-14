@@ -2415,7 +2415,7 @@ GameObject:
   - component: {fileID: 915463937}
   - component: {fileID: 915463936}
   m_Layer: 5
-  m_Name: TextWin
+  m_Name: TextFail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3676,6 +3676,7 @@ MonoBehaviour:
   RepeatOverlay: {fileID: 1318652321}
   GameGrid: {fileID: 718848806}
   HelpButton: {fileID: 161801115}
+  RememberText: {fileID: 1852145111}
   TriangleTemplate: {fileID: 342621029}
   TriangleSuccess: {fileID: 21300000, guid: 06c7986327d11f74bb31d847f46e32a8, type: 3}
   TriangleError: {fileID: 21300000, guid: be7e2e0cdf1f5bb4ca8ad8f6276bbdde, type: 3}
@@ -4292,7 +4293,7 @@ GameObject:
   - component: {fileID: 1834349833}
   - component: {fileID: 1834349832}
   m_Layer: 5
-  m_Name: TextWin
+  m_Name: TextRepeat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4514,7 +4515,7 @@ GameObject:
   - component: {fileID: 1852145112}
   - component: {fileID: 1852145111}
   m_Layer: 5
-  m_Name: TextWin
+  m_Name: TextRemember
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

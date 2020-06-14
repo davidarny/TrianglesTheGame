@@ -11,6 +11,7 @@ public class GameController : MonoBehaviour
     public GameObject RepeatOverlay;
     public GameObject GameGrid;
     public GameObject HelpButton;
+    public Text RememberText;
 
     public GameObject TriangleTemplate;
 
@@ -155,6 +156,8 @@ public class GameController : MonoBehaviour
         GameStore.instance.UnlockLevel();
         GameStore.instance.ResetAfterPrepareEnd();
         GameEvents.instance.TriggerRepeat();
+
+        RememberText.text = GameStore.INITIAL_REMEMBER_TEXT;
     }
 
     public void DoOnHelp()
@@ -162,6 +165,8 @@ public class GameController : MonoBehaviour
         GameStore.instance.LockLevel();
         GameStore.instance.ResetAfterHelp();
         GameStore.instance.ResetAfterRemember();
+
+        RememberText.text = GameStore.AGAIN_REMEMBER_TEXT;
 
         state.Unbind();
         state = remember;
