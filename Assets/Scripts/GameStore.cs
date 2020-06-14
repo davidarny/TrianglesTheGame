@@ -13,6 +13,7 @@ public class GameStore : MonoBehaviour
     public static readonly int LOOSE_DELAY = 1;
     public static readonly int INITIAL_TIMER = 3;
     public static readonly int TIMER_STEP = 3;
+    public static readonly int HELP_PRICE = 0;
 
     public int score { get; private set; } = 0;
     public int weight { get; private set; } = MIN_WEIGHT;
@@ -21,6 +22,7 @@ public class GameStore : MonoBehaviour
     public bool win { get; private set; } = false;
     public bool loose { get; private set; } = false;
     public bool ready { get; private set; } = false;
+    public bool preserve { get; private set; } = false;
 
     public GameObject[] triangles { get; private set; } = Array.Empty<GameObject>();
     public Rotation[] level { get; private set; } = Array.Empty<Rotation>();
@@ -58,8 +60,19 @@ public class GameStore : MonoBehaviour
         ResetWin();
         ResetLoose();
         ResetReady();
+        if (!preserve)
+        {
+            ResetLevel();
+        }
+    }
+
+    public void ResetAfterHelp()
+    {
         ResetTriangles();
-        ResetLevel();
+        ResetTimer();
+        ResetWin();
+        ResetLoose();
+        ResetReady();
     }
 
     public void ResetAfterPrepareEnd()
@@ -126,7 +139,6 @@ public class GameStore : MonoBehaviour
         ResetWin();
         ResetLoose();
         ResetReady();
-        ResetTriangles();
         ResetLevel();
         ResetScore();
     }
@@ -142,7 +154,6 @@ public class GameStore : MonoBehaviour
         ResetWin();
         ResetLoose();
         ResetReady();
-        ResetTriangles();
         ResetLevel();
         ResetScore();
     }
@@ -266,5 +277,20 @@ public class GameStore : MonoBehaviour
     public bool IsEndOfLevel()
     {
         return step == MAX_STEP - 1;
+    }
+
+    public void BuyHelp()
+    {
+        score -= HELP_PRICE;
+    }
+
+    public void LockLevel()
+    {
+        preserve = true;
+    }
+
+    public void UnlockLevel()
+    {
+        preserve = false;
     }
 }

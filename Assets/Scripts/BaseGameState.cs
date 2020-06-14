@@ -12,13 +12,13 @@ public abstract class BaseGameState : GameState
     }
 
     // Start is called before the first frame update
-    void GameState.Start()
+    public void Start()
     {
         DoOnStart();
     }
 
     // Update is called once per frame
-    void GameState.Update()
+    public void Update()
     {
         DoOnUpdate();
     }

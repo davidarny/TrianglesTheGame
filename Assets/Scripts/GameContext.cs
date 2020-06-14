@@ -22,4 +22,6 @@ public interface GameContext
     Sprite TriangleSuccess { get; }
 
     Sprite TriangleError { get; }
+
+    GameObject HelpButton { get; }
 }

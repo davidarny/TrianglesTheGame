@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class GameController : MonoBehaviour
     public GameObject RememberOverlay;
     public GameObject RepeatOverlay;
     public GameObject GameGrid;
+    public GameObject HelpButton;
 
     public GameObject TriangleTemplate;
 
@@ -54,6 +56,7 @@ public class GameController : MonoBehaviour
         public GameObject MenuOverlay => controller.MenuOverlay;
         public GameObject RememberOverlay => controller.RememberOverlay;
         public GameObject RepeatOverlay => controller.RepeatOverlay;
+        public GameObject HelpButton => controller.HelpButton;
     }
 
     // Start is called before the first frame update
@@ -76,6 +79,8 @@ public class GameController : MonoBehaviour
         GameEvents.instance.OnRepeat += DoOnRepeat;
         GameEvents.instance.OnRepeatEnd += DoOnRepeatEnd;
 
+        GameEvents.instance.OnHelp += DoOnHelp;
+
         DoOnMenu();
     }
 
@@ -83,6 +88,22 @@ public class GameController : MonoBehaviour
     void Update()
     {
         state.Update();
+        UpdateHelpButton();
+    }
+
+    private void UpdateHelpButton()
+    {
+        var image = HelpButton.GetComponent<Image>();
+        var transparent = new Color(1.0f, 1.0f, 1.0f, 0.5f);
+        var opaque = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+        if (GameStore.instance.score < GameStore.HELP_PRICE)
+        {
+            image.color = transparent;
+        }
+        else
+        {
+            image.color = opaque;
+        }
     }
 
     private void DoOnMenu()
@@ -131,8 +152,22 @@ public class GameController : MonoBehaviour
 
     private void DoOnPrepareEnd()
     {
+        GameStore.instance.UnlockLevel();
         GameStore.instance.ResetAfterPrepareEnd();
         GameEvents.instance.TriggerRepeat();
+    }
+
+    public void DoOnHelp()
+    {
+        GameStore.instance.LockLevel();
+        GameStore.instance.ResetAfterHelp();
+        GameStore.instance.ResetAfterRemember();
+
+        state.Unbind();
+        state = remember;
+        state.Start();
+
+        GameEvents.instance.TriggerCountRestart();
     }
 
     /* #################### Repeat State #################### */

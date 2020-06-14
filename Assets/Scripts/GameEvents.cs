@@ -181,4 +181,16 @@ public class GameEvents : MonoBehaviour
             OnRepeatEnd();
         }
     }
+
+    /* #################### Help Events #################### */
+
+    public event Action OnHelp;
+
+    public void TriggerHelp()
+    {
+        if (OnHelp != null)
+        {
+            OnHelp();
+        }
+    }
 }

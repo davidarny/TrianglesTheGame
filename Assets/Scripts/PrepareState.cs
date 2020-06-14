@@ -12,6 +12,7 @@ public class PrepareState : BaseGameState
 
     protected override void DoOnStart()
     {
+        game.HelpButton.SetActive(false);
         game.GameOverlay.SetActive(true);
         GameEvents.instance.OnCountEnd += DoOnCountEnd;
         Restart();
@@ -36,7 +37,10 @@ public class PrepareState : BaseGameState
         prev = level;
 
 
-        GameStore.instance.SetLevel(level);
+        if (!GameStore.instance.preserve)
+        {
+            GameStore.instance.SetLevel(level);
+        }
         GameStore.instance.SetTriangles(GenerateTriangles(GameStore.instance.level));
 
         LogUtils.LogState(GetType().Name);
@@ -45,6 +49,7 @@ public class PrepareState : BaseGameState
     public override void Unbind()
     {
         game.GameOverlay.SetActive(false);
+        game.HelpButton.SetActive(true);
         GameEvents.instance.OnCountEnd -= DoOnCountEnd;
     }
 

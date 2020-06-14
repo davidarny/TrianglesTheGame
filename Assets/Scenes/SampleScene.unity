@@ -243,7 +243,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 457.40314, y: -301.92532}
+  m_AnchoredPosition: {x: 465, y: -314.90863}
   m_SizeDelta: {x: 450, y: 222.3}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &143244707
@@ -400,6 +400,7 @@ GameObject:
   - component: {fileID: 161801120}
   - component: {fileID: 161801118}
   - component: {fileID: 161801117}
+  - component: {fileID: 161801119}
   m_Layer: 5
   m_Name: ButtonHelp
   m_TagString: Untagged
@@ -465,6 +466,18 @@ MonoBehaviour:
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!114 &161801119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 161801115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eda7e192f0f3c44b85ab11d72cf5e11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &161801120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -507,7 +520,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 161801121}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 161801119}
+        m_MethodName: HandleClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &161801121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3651,6 +3675,7 @@ MonoBehaviour:
   RememberOverlay: {fileID: 2120926563}
   RepeatOverlay: {fileID: 1318652321}
   GameGrid: {fileID: 718848806}
+  HelpButton: {fileID: 161801115}
   TriangleTemplate: {fileID: 342621029}
   TriangleSuccess: {fileID: 21300000, guid: 06c7986327d11f74bb31d847f46e32a8, type: 3}
   TriangleError: {fileID: 21300000, guid: be7e2e0cdf1f5bb4ca8ad8f6276bbdde, type: 3}

@@ -37,6 +37,10 @@ public class PlayingState : BaseGameState
 
     private bool IsSameAsLevel(Rotation[] rotations)
     {
+        if (rotations.Count() == 0)
+        {
+            return true;
+        }
         return Enumerable.SequenceEqual(rotations, GameStore.instance.level);
     }
 
@@ -47,7 +51,7 @@ public class PlayingState : BaseGameState
             behaviour.StopCoroutine(routine);
         }
 
-        Rotation[] rotations = new Rotation[GameStore.instance.weight];
+        Rotation[] rotations = Array.Empty<Rotation>();
         while (IsSameAsLevel(rotations))
         {
             rotations = LevelGenerator.Create().GetRandomRotations(GameStore.instance.weight);
