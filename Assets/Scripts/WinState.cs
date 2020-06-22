@@ -10,12 +10,18 @@ public class WinState : BaseGameState
     {
         game.GameOverlay.SetActive(false);
         game.WinOverlay.SetActive(false);
+        game.HelpButton.SetActive(true);
+        game.ToolbarController.ShowTimer();
+
         GameEvents.instance.OnCountEnd -= DoOnWinEnd;
     }
 
     protected override void DoOnStart()
     {
         game.GameOverlay.SetActive(true);
+        game.HelpButton.SetActive(false);
+        game.ToolbarController.HideTimer();
+
         GameEvents.instance.OnCountEnd += DoOnWinEnd;
 
         LogUtils.LogState(GetType().Name);

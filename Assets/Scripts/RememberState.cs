@@ -9,14 +9,18 @@ public class RememberState : BaseGameState
     public override void Unbind()
     {
         game.RememberOverlay.SetActive(false);
-        GameEvents.instance.OnCountEnd -= DoOnCountEnd;
+        game.GameOverlay.SetActive(false);
+        game.HelpButton.SetActive(true);
+        // GameEvents.instance.OnCountEnd -= DoOnCountEnd;
 
     }
 
     protected override void DoOnStart()
     {
         game.RememberOverlay.SetActive(true);
-        GameEvents.instance.OnCountEnd += DoOnCountEnd;
+        game.GameOverlay.SetActive(true);
+        game.HelpButton.SetActive(false);
+        // GameEvents.instance.OnCountEnd += DoOnCountEnd;
 
         LogUtils.LogState(GetType().Name);
     }
@@ -25,8 +29,8 @@ public class RememberState : BaseGameState
     {
     }
 
-    private void DoOnCountEnd()
-    {
-        GameEvents.instance.TriggerRememberEnd();
-    }
+    // private void DoOnCountEnd()
+    // {
+    //     GameEvents.instance.TriggerRememberEnd();
+    // }
 }

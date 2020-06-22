@@ -4,11 +4,13 @@ using UnityEngine.UI;
 
 public class ToolbarController : MonoBehaviour
 {
-    public bool active = true;
+    public static readonly float FPS = 60f;
+    // public bool active = true;
     private int current = 0;
-    private int prev = 0;
+    // private int prev = 0;
 
-    public Text display;
+    public GameObject RadialTimer;
+    // public Text display;
     public Text score;
 
     void Awake()
@@ -29,37 +31,62 @@ public class ToolbarController : MonoBehaviour
 
     private void Restart()
     {
-        SetActive();
+        // SetActive();
+        ResetTimerFill();
         StartCoroutine(CountdownStart());
+        StartCoroutine(RadialTimerStart());
+    }
+
+    private float GetTimerStep()
+    {
+        return 1.2f / (float)GameStore.instance.timer / FPS;
+    }
+
+    private float GetFpsStep()
+    {
+        return 1f / FPS;
     }
 
     private void DoOnCountRestart()
     {
-        Show();
+        // Show();
         StopAllCoroutines();
         ResetTimer();
         Restart();
+    }
+
+    private IEnumerator RadialTimerStart()
+    {
+        while (IsRunning())
+        {
+            // if (!active)
+            // {
+            //     yield break;
+            // }
+            RadialTimer.GetComponent<Image>().fillAmount += GetTimerStep();
+            yield return new WaitForSeconds(GetFpsStep());
+        }
     }
 
     private IEnumerator CountdownStart()
     {
         while (IsRunning())
         {
-            if (!active)
-            {
-                yield break;
-            }
-            UpdateText();
+            // if (!active)
+            // {
+            //     yield break;
+            // }
+            // UpdateText();
             yield return new WaitForSeconds(1f);
             DecrementTimer();
         }
-        UpdateText();
+        // UpdateText();
         GameEvents.instance.TriggerCountEnd();
     }
 
     private void ResetTimer()
     {
-        prev = current;
+        // prev = current;
         current = GameStore.instance.timer;
     }
 
@@ -73,36 +100,41 @@ public class ToolbarController : MonoBehaviour
         return current > 0;
     }
 
-    private void UpdateText()
+    // private void UpdateText()
+    // {
+    //     if (GameStore.instance.win || GameStore.instance.loose)
+    //     {
+    //         display.text = prev.ToString();
+    //     }
+    //     else
+    //     {
+    //         display.text = current.ToString();
+    //     }
+    //     score.text = GameStore.instance.score.ToString();
+    // }
+
+    // private void SetActive()
+    // {
+    //     active = true;
+    // }
+
+    // private void SetInactive()
+    // {
+    //     active = false;
+    // }
+
+    public void HideTimer()
     {
-        if (GameStore.instance.win || GameStore.instance.loose)
-        {
-            display.text = prev.ToString();
-        }
-        else
-        {
-            display.text = current.ToString();
-        }
-        score.text = GameStore.instance.score.ToString();
+        RadialTimer.SetActive(false);
     }
 
-    private void SetActive()
+    public void ShowTimer()
     {
-        active = true;
+        RadialTimer.SetActive(true);
     }
 
-    private void SetInactive()
+    private void ResetTimerFill()
     {
-        active = false;
-    }
-
-    private void Hide()
-    {
-        display.gameObject.SetActive(false);
-    }
-
-    private void Show()
-    {
-        display.gameObject.SetActive(true);
+        RadialTimer.GetComponent<Image>().fillAmount = 0f;
     }
 }

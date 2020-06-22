@@ -24,4 +24,6 @@ public interface GameContext
     Sprite TriangleError { get; }
 
     GameObject HelpButton { get; }
+
+    ToolbarController ToolbarController { get; }
 }

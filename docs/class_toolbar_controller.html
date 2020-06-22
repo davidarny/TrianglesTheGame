@@ -64,7 +64,9 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_toolbar_controller-members.html">List of all members</a>  </div>
@@ -79,17 +81,29 @@ Inheritance diagram for ToolbarController:</div>
   <img src="class_toolbar_controller.png" alt=""/>
  </div></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a7d11f13895cb0d973dacf06d22c80d36"><td class="memItemLeft" align="right" valign="top"><a id="a7d11f13895cb0d973dacf06d22c80d36"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>HideTimer</b> ()</td></tr>
+<tr class="separator:a7d11f13895cb0d973dacf06d22c80d36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96d4bc1c7134481cc305320d854a6b58"><td class="memItemLeft" align="right" valign="top"><a id="a96d4bc1c7134481cc305320d854a6b58"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>ShowTimer</b> ()</td></tr>
+<tr class="separator:a96d4bc1c7134481cc305320d854a6b58"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a27afed7ce2fb68de8a29423738208948"><td class="memItemLeft" align="right" valign="top"><a id="a27afed7ce2fb68de8a29423738208948"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>active</b> = true</td></tr>
-<tr class="separator:a27afed7ce2fb68de8a29423738208948"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac42b4189c9663523b02e542b6dd44fef"><td class="memItemLeft" align="right" valign="top"><a id="ac42b4189c9663523b02e542b6dd44fef"></a>
-Text&#160;</td><td class="memItemRight" valign="bottom"><b>display</b></td></tr>
-<tr class="separator:ac42b4189c9663523b02e542b6dd44fef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a664ce388d32e8943d6a938fa20619845"><td class="memItemLeft" align="right" valign="top"><a id="a664ce388d32e8943d6a938fa20619845"></a>
+GameObject&#160;</td><td class="memItemRight" valign="bottom"><b>RadialTimer</b></td></tr>
+<tr class="separator:a664ce388d32e8943d6a938fa20619845"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6dbf1a20a47b0271994b506496fe6271"><td class="memItemLeft" align="right" valign="top"><a id="a6dbf1a20a47b0271994b506496fe6271"></a>
 Text&#160;</td><td class="memItemRight" valign="bottom"><b>score</b></td></tr>
 <tr class="separator:a6dbf1a20a47b0271994b506496fe6271"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:a33a4c8f4091f15702f97e5286435fb6b"><td class="memItemLeft" align="right" valign="top"><a id="a33a4c8f4091f15702f97e5286435fb6b"></a>
+static readonly float&#160;</td><td class="memItemRight" valign="bottom"><b>FPS</b> = 60f</td></tr>
+<tr class="separator:a33a4c8f4091f15702f97e5286435fb6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -105,9 +119,18 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>Update</b> ()</td></t
 <tr class="memitem:a8e69617d8041ee4a2d98062b3a89d59f"><td class="memItemLeft" align="right" valign="top"><a id="a8e69617d8041ee4a2d98062b3a89d59f"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>Restart</b> ()</td></tr>
 <tr class="separator:a8e69617d8041ee4a2d98062b3a89d59f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b2ed1e8d42d96125209f8911301b87e"><td class="memItemLeft" align="right" valign="top"><a id="a7b2ed1e8d42d96125209f8911301b87e"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>GetTimerStep</b> ()</td></tr>
+<tr class="separator:a7b2ed1e8d42d96125209f8911301b87e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39de7929d1d0e37499509f448d348f68"><td class="memItemLeft" align="right" valign="top"><a id="a39de7929d1d0e37499509f448d348f68"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>GetFpsStep</b> ()</td></tr>
+<tr class="separator:a39de7929d1d0e37499509f448d348f68"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1895b7ff50bf2d2d5aafd3b52954a37f"><td class="memItemLeft" align="right" valign="top"><a id="a1895b7ff50bf2d2d5aafd3b52954a37f"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>DoOnCountRestart</b> ()</td></tr>
 <tr class="separator:a1895b7ff50bf2d2d5aafd3b52954a37f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f11c348682aacc84158e8903c41bcc8"><td class="memItemLeft" align="right" valign="top"><a id="a6f11c348682aacc84158e8903c41bcc8"></a>
+IEnumerator&#160;</td><td class="memItemRight" valign="bottom"><b>RadialTimerStart</b> ()</td></tr>
+<tr class="separator:a6f11c348682aacc84158e8903c41bcc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abf2738b4515c4fc595e5cc6f219a49f0"><td class="memItemLeft" align="right" valign="top"><a id="abf2738b4515c4fc595e5cc6f219a49f0"></a>
 IEnumerator&#160;</td><td class="memItemRight" valign="bottom"><b>CountdownStart</b> ()</td></tr>
 <tr class="separator:abf2738b4515c4fc595e5cc6f219a49f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -120,30 +143,15 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>DecrementTimer</b> ()
 <tr class="memitem:a324a94496efe88cb130c26bfe5fe484a"><td class="memItemLeft" align="right" valign="top"><a id="a324a94496efe88cb130c26bfe5fe484a"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsRunning</b> ()</td></tr>
 <tr class="separator:a324a94496efe88cb130c26bfe5fe484a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9d2543b8d5e0a951eeba49ce3cbd8ce0"><td class="memItemLeft" align="right" valign="top"><a id="a9d2543b8d5e0a951eeba49ce3cbd8ce0"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>UpdateText</b> ()</td></tr>
-<tr class="separator:a9d2543b8d5e0a951eeba49ce3cbd8ce0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac9977284b1cc28df14b3f75488116b47"><td class="memItemLeft" align="right" valign="top"><a id="ac9977284b1cc28df14b3f75488116b47"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetActive</b> ()</td></tr>
-<tr class="separator:ac9977284b1cc28df14b3f75488116b47"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a2df44963fda2e1850e7b39a22ba33d"><td class="memItemLeft" align="right" valign="top"><a id="a0a2df44963fda2e1850e7b39a22ba33d"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetInactive</b> ()</td></tr>
-<tr class="separator:a0a2df44963fda2e1850e7b39a22ba33d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a70ac3d3f788f554892f77d2def569ae0"><td class="memItemLeft" align="right" valign="top"><a id="a70ac3d3f788f554892f77d2def569ae0"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Hide</b> ()</td></tr>
-<tr class="separator:a70ac3d3f788f554892f77d2def569ae0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a985fd5274abae725664a6c33a8196a70"><td class="memItemLeft" align="right" valign="top"><a id="a985fd5274abae725664a6c33a8196a70"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Show</b> ()</td></tr>
-<tr class="separator:a985fd5274abae725664a6c33a8196a70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae16d2c5873c5f19cf91bdb964454929c"><td class="memItemLeft" align="right" valign="top"><a id="ae16d2c5873c5f19cf91bdb964454929c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>ResetTimerFill</b> ()</td></tr>
+<tr class="separator:ae16d2c5873c5f19cf91bdb964454929c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:ac374c460c5cfa5e3c974e14d9ebc9aa8"><td class="memItemLeft" align="right" valign="top"><a id="ac374c460c5cfa5e3c974e14d9ebc9aa8"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>current</b> = 0</td></tr>
 <tr class="separator:ac374c460c5cfa5e3c974e14d9ebc9aa8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a71716eeb650cdf55a99c94c28aa4de8e"><td class="memItemLeft" align="right" valign="top"><a id="a71716eeb650cdf55a99c94c28aa4de8e"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>prev</b> = 0</td></tr>
-<tr class="separator:a71716eeb650cdf55a99c94c28aa4de8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>Assets/Scripts/ToolbarController.cs</li>

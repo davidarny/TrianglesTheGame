@@ -10,12 +10,18 @@ public class FailState : BaseGameState
     {
         game.FailOverlay.SetActive(false);
         game.GameOverlay.SetActive(false);
+        game.HelpButton.SetActive(true);
+        game.ToolbarController.ShowTimer();
+
         GameEvents.instance.OnCountEnd -= DoOnLooseEnd;
     }
 
     protected override void DoOnStart()
     {
         game.GameOverlay.SetActive(true);
+        game.HelpButton.SetActive(false);
+        game.ToolbarController.HideTimer();
+
         GameEvents.instance.OnCountEnd += DoOnLooseEnd;
 
         LogUtils.LogState(GetType().Name);

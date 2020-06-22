@@ -14,7 +14,10 @@ public class PlayingState : BaseGameState
     protected override void DoOnStart()
     {
         game.GameOverlay.SetActive(true);
+        game.ToolbarController.ShowTimer();
+
         Restart();
+
         GameEvents.instance.OnCountEnd += DoOnLoose;
     }
 
@@ -32,6 +35,8 @@ public class PlayingState : BaseGameState
     public override void Unbind()
     {
         game.GameOverlay.SetActive(false);
+        game.ToolbarController.HideTimer();
+
         GameEvents.instance.OnCountEnd -= DoOnLoose;
     }
 

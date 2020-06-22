@@ -3,8 +3,8 @@ using UnityEngine.UI;
 
 public class WinController : MonoBehaviour
 {
-    public static readonly string WIN_TEXT = "WIN!";
-    public static readonly string LEVEL_TEXT = "LEVEL COMPLETED!";
+    public static readonly string WIN_TEXT = "Perfect!";
+    public static readonly string LEVEL_TEXT = "Level Completed!";
 
     public Text win;
     public Text score;

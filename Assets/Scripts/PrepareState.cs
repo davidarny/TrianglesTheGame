@@ -14,7 +14,10 @@ public class PrepareState : BaseGameState
     {
         game.HelpButton.SetActive(false);
         game.GameOverlay.SetActive(true);
+        game.ToolbarController.ShowTimer();
+
         GameEvents.instance.OnCountEnd += DoOnCountEnd;
+
         Restart();
     }
 
@@ -50,6 +53,8 @@ public class PrepareState : BaseGameState
     {
         game.GameOverlay.SetActive(false);
         game.HelpButton.SetActive(true);
+        game.ToolbarController.HideTimer();
+
         GameEvents.instance.OnCountEnd -= DoOnCountEnd;
     }
 

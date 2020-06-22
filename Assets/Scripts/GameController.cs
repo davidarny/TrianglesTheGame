@@ -1,8 +1,14 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
+    public Material TexturedBackground;
+    public Material Background;
+
     public GameObject GameOverlay;
     public GameObject WinOverlay;
     public GameObject FailOverlay;
@@ -25,7 +31,7 @@ public class GameController : MonoBehaviour
     private RememberState remember;
     private RepeatState repeat;
     private FailState fail;
-    private GameState state;
+    private List<GameState> states = new List<GameState>();
 
     public GameController()
     {
@@ -58,6 +64,7 @@ public class GameController : MonoBehaviour
         public GameObject RememberOverlay => controller.RememberOverlay;
         public GameObject RepeatOverlay => controller.RepeatOverlay;
         public GameObject HelpButton => controller.HelpButton;
+        public ToolbarController ToolbarController => controller.GetComponent<ToolbarController>();
     }
 
     // Start is called before the first frame update
@@ -74,11 +81,11 @@ public class GameController : MonoBehaviour
         GameEvents.instance.OnLoose += DoOnLoose;
         GameEvents.instance.OnLooseEnd += DoOnLooseEnd;
 
-        GameEvents.instance.OnRemember += DoOnRemember;
-        GameEvents.instance.OnRememberEnd += DoOnRememberEnd;
+        // GameEvents.instance.OnRemember += DoOnRemember;
+        // GameEvents.instance.OnRememberEnd += DoOnRememberEnd;
 
-        GameEvents.instance.OnRepeat += DoOnRepeat;
-        GameEvents.instance.OnRepeatEnd += DoOnRepeatEnd;
+        // GameEvents.instance.OnRepeat += DoOnRepeat;
+        // GameEvents.instance.OnRepeatEnd += DoOnRepeatEnd;
 
         GameEvents.instance.OnHelp += DoOnHelp;
 
@@ -88,7 +95,7 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        state.Update();
+        states.ForEach(state => state.Update());
         UpdateHelpButton();
     }
 
@@ -111,32 +118,34 @@ public class GameController : MonoBehaviour
     {
         GameStore.instance.ResetAfterMenu();
 
-        if (state != null)
-        {
-            state.Unbind();
-        }
-        state = menu;
-        state.Start();
+        SetTexturedBackground();
+
+        SwitchTo(menu);
     }
 
     /* #################### Remember State #################### */
 
-    private void DoOnRemember()
-    {
-        GameStore.instance.ResetAfterRemember();
+    // private void DoOnRemember()
+    // {
+    //     GameStore.instance.ResetAfterRemember();
 
-        state.Unbind();
-        state = remember;
-        state.Start();
+    //     prepare.Start();
+    //     prepare.Unbind();
 
-        GameEvents.instance.TriggerCountRestart();
-    }
+    //     states.ForEach(state => state.Unbind());
+    //     states.Add(prepare);
+    //     states.Add(remember);
+    //     states.ForEach(state => state.Start());
 
-    private void DoOnRememberEnd()
-    {
-        GameStore.instance.ResetAfterRememberEnd();
-        GameEvents.instance.TriggerPrepare();
-    }
+    //     GameEvents.instance.TriggerCountRestart();
+    //     GameStore.instance.LockLevel();
+    // }
+
+    // private void DoOnRememberEnd()
+    // {
+    //     GameStore.instance.ResetAfterRememberEnd();
+    //     GameEvents.instance.TriggerPrepare();
+    // }
 
     /* #################### Prepare State #################### */
 
@@ -144,9 +153,9 @@ public class GameController : MonoBehaviour
     {
         GameStore.instance.ResetAfterPrepare();
 
-        state.Unbind();
-        state = prepare;
-        state.Start();
+        SetBackground();
+
+        SwitchTo(prepare, remember);
 
         GameEvents.instance.TriggerCountRestart();
     }
@@ -155,49 +164,50 @@ public class GameController : MonoBehaviour
     {
         GameStore.instance.UnlockLevel();
         GameStore.instance.ResetAfterPrepareEnd();
-        GameEvents.instance.TriggerRepeat();
+
+        SwitchTo(playing, repeat);
 
         RememberText.text = GameStore.INITIAL_REMEMBER_TEXT;
+
+        GameEvents.instance.TriggerCountRestart();
     }
 
     public void DoOnHelp()
     {
         GameStore.instance.LockLevel();
         GameStore.instance.ResetAfterHelp();
-        GameStore.instance.ResetAfterRemember();
+        GameStore.instance.ResetAfterPrepare();
 
         RememberText.text = GameStore.AGAIN_REMEMBER_TEXT;
 
-        state.Unbind();
-        state = remember;
-        state.Start();
+        SwitchTo(prepare, remember);
 
         GameEvents.instance.TriggerCountRestart();
     }
 
     /* #################### Repeat State #################### */
 
-    private void DoOnRepeat()
-    {
-        GameStore.instance.ResetAfterRepeat();
+    // private void DoOnRepeat()
+    // {
+    //     GameStore.instance.ResetAfterRepeat();
 
-        state.Unbind();
-        state = repeat;
-        state.Start();
+    //     state.Unbind();
+    //     state = repeat;
+    //     state.Start();
 
-        GameEvents.instance.TriggerCountRestart();
-    }
+    //     GameEvents.instance.TriggerCountRestart();
+    // }
 
-    private void DoOnRepeatEnd()
-    {
-        GameStore.instance.ResetAfterRepeatEnd();
+    // private void DoOnRepeatEnd()
+    // {
+    //     GameStore.instance.ResetAfterRepeatEnd();
 
-        state.Unbind();
-        state = playing;
-        state.Start();
+    //     state.Unbind();
+    //     state = playing;
+    //     state.Start();
 
-        GameEvents.instance.TriggerCountRestart();
-    }
+    //     GameEvents.instance.TriggerCountRestart();
+    // }
 
     /* #################### Win State #################### */
 
@@ -205,15 +215,15 @@ public class GameController : MonoBehaviour
     {
         GameStore.instance.ResetAfterWin();
 
-        state.Unbind();
-        state = win;
-        state.Start();
+        SwitchTo(win);
 
         GameEvents.instance.TriggerCountRestart();
     }
 
     private void DoOnWinEnd()
     {
+        SetTexturedBackground();
+
         GameStore.instance.ResetAfterWinEnd();
     }
 
@@ -223,15 +233,38 @@ public class GameController : MonoBehaviour
     {
         GameStore.instance.ResetAfterLoose();
 
-        state.Unbind();
-        state = fail;
-        state.Start();
+        SwitchTo(fail);
 
         GameEvents.instance.TriggerCountRestart();
     }
 
     private void DoOnLooseEnd()
     {
+        SetTexturedBackground();
+
         GameStore.instance.ResetAfterLooseEnd();
+    }
+
+    private void SwitchTo(params GameState[] runnables)
+    {
+        states.ForEach(state => state.Unbind());
+        states.Clear();
+
+        foreach (var state in runnables)
+        {
+            states.Add(state);
+        }
+
+        states.ForEach(state => state.Start());
+    }
+
+    private void SetTexturedBackground()
+    {
+        GetComponent<Renderer>().material = TexturedBackground;
+    }
+
+    private void SetBackground()
+    {
+        GetComponent<Renderer>().material = Background;
     }
 }
