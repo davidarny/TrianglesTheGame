@@ -53,6 +53,7 @@ public class ToolbarController : MonoBehaviour
         StopAllCoroutines();
         ResetTimer();
         Restart();
+        UpdateScoreText();
     }
 
     private IEnumerator RadialTimerStart()
@@ -100,18 +101,18 @@ public class ToolbarController : MonoBehaviour
         return current > 0;
     }
 
-    // private void UpdateText()
-    // {
-    //     if (GameStore.instance.win || GameStore.instance.loose)
-    //     {
-    //         display.text = prev.ToString();
-    //     }
-    //     else
-    //     {
-    //         display.text = current.ToString();
-    //     }
-    //     score.text = GameStore.instance.score.ToString();
-    // }
+    private void UpdateScoreText()
+    {
+        // if (GameStore.instance.win || GameStore.instance.loose)
+        // {
+        //     display.text = prev.ToString();
+        // }
+        // else
+        // {
+        //     display.text = current.ToString();
+        // }
+        score.text = GameStore.instance.score.ToString();
+    }
 
     // private void SetActive()
     // {
