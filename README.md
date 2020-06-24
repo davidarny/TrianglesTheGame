@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="https://github.com/DavidArutiunian/GameDev">
-    <img src="Assets/Sprites/Logo.png" alt="Logo" width="100" height="100">
+    <img src="Misc/Logo.png" alt="Logo" width="100" height="100">
   </a>
 
   <p align="center" style="font-size: 2em;">🔺 Triangles 🔻</p>
@@ -24,3 +24,7 @@
 -   [LGBT Color Palette](https://www.schemecolor.com/lgbt-flag-colors.php) 🏳️‍🌈
 
 -   [UI Assets](https://assetstore.unity.com/packages/2d/gui/icons/simple-button-set-01-153979) 📦
+
+<p align="center">🕹️ Gameplay Demo 📹</p>
+
+![](Misc/Screencast.gif)
