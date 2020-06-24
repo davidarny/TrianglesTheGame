@@ -39,12 +39,7 @@ public class ToolbarController : MonoBehaviour
 
     private float GetTimerStep()
     {
-        return 1.2f / (float)GameStore.instance.timer / FPS;
-    }
-
-    private float GetFpsStep()
-    {
-        return 1f / FPS;
+        return (1f / (float)GameStore.instance.timer) / (1f / Time.deltaTime);
     }
 
     private void DoOnCountRestart()
@@ -65,7 +60,7 @@ public class ToolbarController : MonoBehaviour
             //     yield break;
             // }
             RadialTimer.GetComponent<Image>().fillAmount += GetTimerStep();
-            yield return new WaitForSeconds(GetFpsStep());
+            yield return new WaitForFixedUpdate();
         }
     }
 

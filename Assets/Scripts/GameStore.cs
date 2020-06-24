@@ -13,7 +13,7 @@ public class GameStore : MonoBehaviour
     public static readonly int LOOSE_DELAY = 1;
     public static readonly int INITIAL_TIMER = 3;
     public static readonly int TIMER_STEP = 3;
-    public static readonly int HELP_PRICE = 100;
+    public static readonly int HELP_PRICE = 40;
     public static readonly string INITIAL_REMEMBER_TEXT = "Remember";
     public static readonly string AGAIN_REMEMBER_TEXT = "Remember Again!";
 
