@@ -3,8 +3,8 @@ using UnityEngine.UI;
 
 public class WinController : MonoBehaviour
 {
-    public static readonly string WIN_TEXT = "Perfect!";
-    public static readonly string LEVEL_TEXT = "Level Completed!";
+    private static readonly string TEXT_PERFECT = "Perfect!";
+    private static readonly string TEXT_LEVEL_COMPLETED = "Level Completed!";
 
     public Text win;
     public Text score;
@@ -24,11 +24,13 @@ public class WinController : MonoBehaviour
     {
         if (GameStore.instance.IsEndOfLevel())
         {
-            win.text = LEVEL_TEXT;
+            win.text = TEXT_LEVEL_COMPLETED;
+            win.color = new Color32(255, 255, 255, 255);
         }
         else
         {
-            win.text = WIN_TEXT;
+            win.color = new Color32(247, 168, 184, 255);
+            win.text = TEXT_PERFECT;
         }
 
         score.text = $"+{GameStore.instance.GetNextScore().ToString()} score";
