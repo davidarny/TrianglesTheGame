@@ -66,9 +66,9 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
-<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_toolbar_controller-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">ToolbarController Class Reference</div>  </div>
@@ -98,12 +98,9 @@ GameObject&#160;</td><td class="memItemRight" valign="bottom"><b>RadialTimer</b>
 <tr class="memitem:a6dbf1a20a47b0271994b506496fe6271"><td class="memItemLeft" align="right" valign="top"><a id="a6dbf1a20a47b0271994b506496fe6271"></a>
 Text&#160;</td><td class="memItemRight" valign="bottom"><b>score</b></td></tr>
 <tr class="separator:a6dbf1a20a47b0271994b506496fe6271"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
-Static Public Attributes</h2></td></tr>
-<tr class="memitem:a33a4c8f4091f15702f97e5286435fb6b"><td class="memItemLeft" align="right" valign="top"><a id="a33a4c8f4091f15702f97e5286435fb6b"></a>
-static readonly float&#160;</td><td class="memItemRight" valign="bottom"><b>FPS</b> = 60f</td></tr>
-<tr class="separator:a33a4c8f4091f15702f97e5286435fb6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a429af4df07c180dd30205f9b8321b9b2"><td class="memItemLeft" align="right" valign="top"><a id="a429af4df07c180dd30205f9b8321b9b2"></a>
+Text&#160;</td><td class="memItemRight" valign="bottom"><b>level</b></td></tr>
+<tr class="separator:a429af4df07c180dd30205f9b8321b9b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -143,6 +140,9 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsRunning</b> ()</td>
 <tr class="memitem:a4617929f719bd4e37be83e565588a319"><td class="memItemLeft" align="right" valign="top"><a id="a4617929f719bd4e37be83e565588a319"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>UpdateScoreText</b> ()</td></tr>
 <tr class="separator:a4617929f719bd4e37be83e565588a319"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3854696a0d86c9b9eb793337871ff301"><td class="memItemLeft" align="right" valign="top"><a id="a3854696a0d86c9b9eb793337871ff301"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>UpdateLevelText</b> ()</td></tr>
+<tr class="separator:a3854696a0d86c9b9eb793337871ff301"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae16d2c5873c5f19cf91bdb964454929c"><td class="memItemLeft" align="right" valign="top"><a id="ae16d2c5873c5f19cf91bdb964454929c"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>ResetTimerFill</b> ()</td></tr>
 <tr class="separator:ae16d2c5873c5f19cf91bdb964454929c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -152,6 +152,15 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:ac374c460c5cfa5e3c974e14d9ebc9aa8"><td class="memItemLeft" align="right" valign="top"><a id="ac374c460c5cfa5e3c974e14d9ebc9aa8"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>current</b> = 0</td></tr>
 <tr class="separator:ac374c460c5cfa5e3c974e14d9ebc9aa8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
+Static Private Attributes</h2></td></tr>
+<tr class="memitem:a4f8afe53f652005fda58bed2857a700a"><td class="memItemLeft" align="right" valign="top"><a id="a4f8afe53f652005fda58bed2857a700a"></a>
+static readonly char&#160;</td><td class="memItemRight" valign="bottom"><b>DASH</b> = '–'</td></tr>
+<tr class="separator:a4f8afe53f652005fda58bed2857a700a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33a4c8f4091f15702f97e5286435fb6b"><td class="memItemLeft" align="right" valign="top"><a id="a33a4c8f4091f15702f97e5286435fb6b"></a>
+static readonly float&#160;</td><td class="memItemRight" valign="bottom"><b>FPS</b> = 60f</td></tr>
+<tr class="separator:a33a4c8f4091f15702f97e5286435fb6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>Assets/Scripts/ToolbarController.cs</li>

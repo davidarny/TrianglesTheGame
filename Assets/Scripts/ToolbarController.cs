@@ -4,7 +4,9 @@ using UnityEngine.UI;
 
 public class ToolbarController : MonoBehaviour
 {
-    public static readonly float FPS = 60f;
+    private static readonly char DASH = '–';
+    private static readonly float FPS = 60f;
+
     // public bool active = true;
     private int current = 0;
     // private int prev = 0;
@@ -12,6 +14,7 @@ public class ToolbarController : MonoBehaviour
     public GameObject RadialTimer;
     // public Text display;
     public Text score;
+    public Text level;
 
     void Awake()
     {
@@ -49,6 +52,7 @@ public class ToolbarController : MonoBehaviour
         ResetTimer();
         Restart();
         UpdateScoreText();
+        UpdateLevelText();
     }
 
     private IEnumerator RadialTimerStart()
@@ -107,6 +111,13 @@ public class ToolbarController : MonoBehaviour
         //     display.text = current.ToString();
         // }
         score.text = GameStore.instance.score.ToString();
+    }
+
+    private void UpdateLevelText()
+    {
+        string weight = (GameStore.instance.GetAbsoluteWeight() + 1).ToString();
+        string step = (GameStore.instance.step + 1).ToString();
+        level.text = $"{weight}{DASH}{step}";
     }
 
     // private void SetActive()
