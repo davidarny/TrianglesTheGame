@@ -23,6 +23,8 @@ public class GameController : MonoBehaviour
 
     public Sprite TriangleSuccess;
     public Sprite TriangleError;
+    public Sprite TrianglePurple;
+    public Sprite TriangleOrange;
 
     private PrepareState prepare;
     private PlayingState playing;
@@ -264,10 +266,12 @@ public class GameController : MonoBehaviour
     private void SetBlueBackground()
     {
         GetComponent<Renderer>().material = BlueBackground;
+        TriangleTemplate.GetComponent<SpriteRenderer>().sprite = TrianglePurple;
     }
 
     private void SetPurpleBackground()
     {
         GetComponent<Renderer>().material = PurpleBackground;
+        TriangleTemplate.GetComponent<SpriteRenderer>().sprite = TriangleOrange;
     }
 }
