@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-    public Material TexturedBackground;
-    public Material Background;
+    public Material BlueBackground;
+    public Material PurpleBackground;
 
     public GameObject GameOverlay;
     public GameObject WinOverlay;
@@ -118,7 +118,7 @@ public class GameController : MonoBehaviour
     {
         GameStore.instance.ResetAfterMenu();
 
-        SetTexturedBackground();
+        SetBlueBackground();
 
         SwitchTo(menu);
     }
@@ -153,7 +153,14 @@ public class GameController : MonoBehaviour
     {
         GameStore.instance.ResetAfterPrepare();
 
-        SetBackground();
+        if (GameStore.instance.GetAbsoluteWeight() % 2 == 0)
+        {
+            SetBlueBackground();
+        }
+        else
+        {
+            SetPurpleBackground();
+        }
 
         SwitchTo(prepare, remember);
 
@@ -222,8 +229,6 @@ public class GameController : MonoBehaviour
 
     private void DoOnWinEnd()
     {
-        SetTexturedBackground();
-
         GameStore.instance.ResetAfterWinEnd();
     }
 
@@ -240,8 +245,6 @@ public class GameController : MonoBehaviour
 
     private void DoOnLooseEnd()
     {
-        SetTexturedBackground();
-
         GameStore.instance.ResetAfterLooseEnd();
     }
 
@@ -258,13 +261,13 @@ public class GameController : MonoBehaviour
         states.ForEach(state => state.Start());
     }
 
-    private void SetTexturedBackground()
+    private void SetBlueBackground()
     {
-        GetComponent<Renderer>().material = TexturedBackground;
+        GetComponent<Renderer>().material = BlueBackground;
     }
 
-    private void SetBackground()
+    private void SetPurpleBackground()
     {
-        GetComponent<Renderer>().material = Background;
+        GetComponent<Renderer>().material = PurpleBackground;
     }
 }

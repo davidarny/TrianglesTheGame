@@ -1473,7 +1473,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -3273,7 +3273,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b85999a30093ca541a87ad4d5b8eeb01, type: 2}
+  - {fileID: 2100000, guid: 18e843513613189498c76929adc25aa3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3322,8 +3322,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2039f2fb8d7c49a10952c2d2ba215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TexturedBackground: {fileID: 2100000, guid: b85999a30093ca541a87ad4d5b8eeb01, type: 2}
-  Background: {fileID: 2100000, guid: cff89d9c00a430d409d211d37166fa2d, type: 2}
+  BlueBackground: {fileID: 2100000, guid: 18e843513613189498c76929adc25aa3, type: 2}
+  PurpleBackground: {fileID: 2100000, guid: cff89d9c00a430d409d211d37166fa2d, type: 2}
   GameOverlay: {fileID: 1648043609}
   WinOverlay: {fileID: 1909797144}
   FailOverlay: {fileID: 797313914}
