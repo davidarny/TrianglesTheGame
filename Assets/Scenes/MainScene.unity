@@ -1571,7 +1571,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9843137, g: 0.99607843, b: 0.9764706, a: 1}
+  m_Color: {r: 0.5411765, g: 0.7882353, b: 0.14901961, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1590,7 +1590,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: +30 score
+  m_Text: +10 score
 --- !u!222 &590299949
 CanvasRenderer:
   m_ObjectHideFlags: 0
