@@ -5,7 +5,7 @@ public class GameStore : MonoBehaviour
 {
     public static readonly int SCORE_STEP = 10;
     public static readonly int MIN_WEIGHT = 2;
-    public static readonly int MAX_WEIGHT = 12;
+    public static readonly int MAX_WEIGHT = 6;
     public static readonly int MAX_STEP = 4;
     public static readonly int REMEMBER_DELAY = 1;
     public static readonly int REPEAT_DELAY = 1;
