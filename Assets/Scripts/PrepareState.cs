@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PrepareState : BaseGameState
 {
@@ -15,6 +16,8 @@ public class PrepareState : BaseGameState
         game.HelpButton.SetActive(false);
         game.GameOverlay.SetActive(true);
         game.ToolbarController.ShowTimer();
+
+        SetGridLayoutSpacing();
 
         GameEvents.instance.OnCountEnd += DoOnCountEnd;
 
@@ -62,5 +65,17 @@ public class PrepareState : BaseGameState
     {
         GameStore.instance.SetReady(true);
         GameEvents.instance.TriggerPrepareEnd();
+    }
+
+    private void SetGridLayoutSpacing()
+    {
+        if (GameStore.instance.GetAbsoluteWeight() == 0)
+        {
+            game.GameGrid.GetComponent<GridLayoutGroup>().spacing = new Vector2(1.3f, 1f);
+        }
+        else
+        {
+            game.GameGrid.GetComponent<GridLayoutGroup>().spacing = new Vector2(0.7f, 1f);
+        }
     }
 }

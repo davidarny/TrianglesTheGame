@@ -37,8 +37,15 @@ public class TriangleGenerator
     private GameObject CreateTriangle(Vector3 pos, Quaternion rot)
     {
         var triangle = GameObject.Instantiate(template, pos, rot, parent);
-        triangle.transform.localScale += new Vector3(1.5f, 1.5f, 1);
+        triangle.transform.localScale += GetTriangleScale();
         return triangle;
+    }
+
+    private Vector3 GetTriangleScale() {
+        if (GameStore.instance.GetAbsoluteWeight() == 0) {
+            return new Vector3(2f, 2f, 1f);
+        }
+        return new Vector3(1.5f, 1.5f, 1f);
     }
 
     private void SortTriangles(GameObject[] triangles)

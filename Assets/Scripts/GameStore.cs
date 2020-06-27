@@ -17,7 +17,8 @@ public class GameStore : MonoBehaviour
     public static readonly string INITIAL_REMEMBER_TEXT = "Remember";
     public static readonly string AGAIN_REMEMBER_TEXT = "Remember Again!";
 
-    public int score { get; private set; } = 0;    public int weight { get; private set; } = MIN_WEIGHT;
+    public int score { get; private set; } = 0;
+    public int weight { get; private set; } = MIN_WEIGHT;
     public int step { get; private set; } = 0;
     public int timer { get; private set; } = INITIAL_TIMER;
     public bool win { get; private set; } = false;
