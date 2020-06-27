@@ -14,7 +14,6 @@ public class ReplayHandler : MonoBehaviour
 
     public void HandleClick()
     {
-        // GameEvents.instance.TriggerRemember();
         GameEvents.instance.TriggerPrepare();
     }
 }

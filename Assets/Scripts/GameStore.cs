@@ -101,30 +101,6 @@ public class GameStore : MonoBehaviour
         NextScore();
     }
 
-    /* #################### Remember State #################### */
-
-    // public void ResetAfterRemember()
-    // {
-    //     timer = REMEMBER_DELAY;
-    // }
-
-    // public void ResetAfterRememberEnd()
-    // {
-    //     ResetTimer();
-    // }
-
-    /* #################### Repeat State #################### */
-
-    // public void ResetAfterRepeat()
-    // {
-    //     timer = REPEAT_DELAY;
-    // }
-
-    // public void ResetAfterRepeatEnd()
-    // {
-    //     ResetTimer();
-    // }
-
     /* #################### Fail State #################### */
 
     public void ResetAfterLoose()

@@ -10,14 +10,12 @@ public class RepeatState : BaseGameState
     {
         game.RepeatOverlay.SetActive(false);
         game.GameOverlay.SetActive(false);
-        // GameEvents.instance.OnCountEnd -= DoOnCountEnd;
     }
 
     protected override void DoOnStart()
     {
         game.RepeatOverlay.SetActive(true);
         game.GameOverlay.SetActive(true);
-        // GameEvents.instance.OnCountEnd += DoOnCountEnd;
 
         LogUtils.LogState(GetType().Name);
     }
@@ -25,9 +23,4 @@ public class RepeatState : BaseGameState
     protected override void DoOnUpdate()
     {
     }
-
-    // private void DoOnCountEnd()
-    // {
-    //     GameEvents.instance.TriggerRepeatEnd();
-    // }
 }

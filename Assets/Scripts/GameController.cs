@@ -83,12 +83,6 @@ public class GameController : MonoBehaviour
         GameEvents.instance.OnLoose += DoOnLoose;
         GameEvents.instance.OnLooseEnd += DoOnLooseEnd;
 
-        // GameEvents.instance.OnRemember += DoOnRemember;
-        // GameEvents.instance.OnRememberEnd += DoOnRememberEnd;
-
-        // GameEvents.instance.OnRepeat += DoOnRepeat;
-        // GameEvents.instance.OnRepeatEnd += DoOnRepeatEnd;
-
         GameEvents.instance.OnHelp += DoOnHelp;
 
         DoOnMenu();
@@ -124,30 +118,6 @@ public class GameController : MonoBehaviour
 
         SwitchTo(menu);
     }
-
-    /* #################### Remember State #################### */
-
-    // private void DoOnRemember()
-    // {
-    //     GameStore.instance.ResetAfterRemember();
-
-    //     prepare.Start();
-    //     prepare.Unbind();
-
-    //     states.ForEach(state => state.Unbind());
-    //     states.Add(prepare);
-    //     states.Add(remember);
-    //     states.ForEach(state => state.Start());
-
-    //     GameEvents.instance.TriggerCountRestart();
-    //     GameStore.instance.LockLevel();
-    // }
-
-    // private void DoOnRememberEnd()
-    // {
-    //     GameStore.instance.ResetAfterRememberEnd();
-    //     GameEvents.instance.TriggerPrepare();
-    // }
 
     /* #################### Prepare State #################### */
 
@@ -193,30 +163,6 @@ public class GameController : MonoBehaviour
 
         GameEvents.instance.TriggerCountRestart();
     }
-
-    /* #################### Repeat State #################### */
-
-    // private void DoOnRepeat()
-    // {
-    //     GameStore.instance.ResetAfterRepeat();
-
-    //     state.Unbind();
-    //     state = repeat;
-    //     state.Start();
-
-    //     GameEvents.instance.TriggerCountRestart();
-    // }
-
-    // private void DoOnRepeatEnd()
-    // {
-    //     GameStore.instance.ResetAfterRepeatEnd();
-
-    //     state.Unbind();
-    //     state = playing;
-    //     state.Start();
-
-    //     GameEvents.instance.TriggerCountRestart();
-    // }
 
     /* #################### Win State #################### */
 

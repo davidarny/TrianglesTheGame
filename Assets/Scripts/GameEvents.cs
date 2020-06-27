@@ -138,50 +138,6 @@ public class GameEvents : MonoBehaviour
         }
     }
 
-    /* #################### Remember Events #################### */
-
-    // public event Action OnRemember;
-
-    // public void TriggerRemember()
-    // {
-    //     if (OnRemember != null)
-    //     {
-    //         OnRemember();
-    //     }
-    // }
-
-    // public event Action OnRememberEnd;
-
-    // public void TriggerRememberEnd()
-    // {
-    //     if (OnRememberEnd != null)
-    //     {
-    //         OnRememberEnd();
-    //     }
-    // }
-
-    /* #################### Repeat Events #################### */
-
-    // public event Action OnRepeat;
-
-    // public void TriggerRepeat()
-    // {
-    //     if (OnRepeat != null)
-    //     {
-    //         OnRepeat();
-    //     }
-    // }
-
-    // public event Action OnRepeatEnd;
-
-    // public void TriggerRepeatEnd()
-    // {
-    //     if (OnRepeatEnd != null)
-    //     {
-    //         OnRepeatEnd();
-    //     }
-    // }
-
     /* #################### Help Events #################### */
 
     public event Action OnHelp;
